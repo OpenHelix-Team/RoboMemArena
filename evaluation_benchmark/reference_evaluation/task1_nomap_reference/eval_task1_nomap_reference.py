@@ -1,8 +1,8 @@
 """
-Task1 评估脚本（HKUST）
+Task1 （HKUST）
 
-- VLM 与 VLA 都使用 RoboMemArena LIBERO 默认 agentview
-- 调度逻辑改为：VLM 推理一次 -> VLA 执行 10 步 -> 停下来等待下一次 VLM
+- VLM  VLA  RoboMemArena LIBERO  agentview
+- ：VLM  -> VLA  10  ->  VLM
 """
 from __future__ import annotations
 import dataclasses
@@ -46,7 +46,7 @@ for path in [DRAWER_DIR, HIGH_QWEN_DIR, OPENPI_CLIENT_SRC, OPENPI_SRC]:
     if path not in sys.path:
         sys.path.insert(0, path)
 
-# VLM 相关
+# VLM 
 from transformers import AutoProcessor, AutoModelForCausalLM
 from keyframe_selection import build_visual_memory, get_frames_from_indices
 
@@ -54,10 +54,10 @@ from keyframe_selection import build_visual_memory, get_frames_from_indices
 from openpi_client import websocket_client_policy as _websocket_client_policy
 from robocerebra_adapter import obs_to_pi_element, _process_image_match_training
 
-# Libero 导入策略：
-# 1) TARGET_LIBERO_PATH（若设置）优先
-# 2) uv/.venv 默认环境导入
-# 3) 自动回退到 openpi/third_party/libero（避免直接崩溃）
+# Libero ：
+# 1) TARGET_LIBERO_PATH（）
+# 2) uv/.venv 
+# 3)  openpi/third_party/libero（）
 _libero_path = os.environ.get("TARGET_LIBERO_PATH", "").strip()
 if not _libero_path:
     _fallback_libero = REPO_ROOT / "evaluation_benchmark" / "libero_fork"
@@ -102,11 +102,11 @@ AVAILABLE SUBTASKS (you MUST choose EXACTLY one from this list):
 
 Respond in JSON: {"current_primitive": "<subtask>"}"""
 
-# 默认保持旧行为（5 帧 + 关键帧）
+# （5  + ）
 SYSTEM_PROMPT = SYSTEM_PROMPT_TASK1_KF5
 
 # ========================
-# Global prompt (与训练数据 task_info.json task1 global_desc 一致)
+# Global prompt ( task_info.json task1 global_desc )
 # ========================
 GLOBAL_PROMPT = """Global Task: Execute a sequential dual-object storage task that involves organizing two items into a shared container. Begin by locating and picking up the cookies from the table surface, carefully place it to the basket positioned on the table or countertop, and place the cookies inside the basket to ensure it rest stably within the container interior. Next, return to the workspace to locate and grasp the tomato sauce container, transport it to the same container, and place the tomato sauce into the basket adjacent to the cookies without causing displacement or instability. This systematic workflow ensures both cookies and tomato sauce are stored together in the basket through sequential pick-and-place operations, maintaining proper item organization within the shared storage container."""
 
@@ -127,28 +127,28 @@ SCENE_DESCRIPTION = """Scene description:
 
 @dataclasses.dataclass
 class Args:
-    # ===== 环境 =====
+    # =====  =====
     bddl_file: str = "bddl/1_cookies_tomato_basket.bddl"
-    # 环境保持 640x480 原始渲染。
-    # VLA 侧随后走 obs_to_pi_element -> flipud + resize_size。
+    #  640x480 
+    # VLA  obs_to_pi_element -> flipud + resize_size
     env_img_height: int = 480
     env_img_width: int = 640
-    # VLM 侧按 q3vl_fv_r1 训练数据链路对齐：
-    # 先构造 fullvlm 风格的 256x256 中间态，再 resize 到 768x432。
+    # VLM  q3vl_fv_r1 ：
+    #  fullvlm  256x256 ， resize  768x432
     vlm_render_height: int = 720
     vlm_render_width: int = 1280
     vlm_use_openpi_camera_pose: bool = False
-    # VLM 输入处理 profile:
+    # VLM  profile:
     # - fullvlm_256:   flipud -> 256x256(square) -> 256x256
     # - task1_768:     flipud -> 768x432
     # - task1_1080:    flipud -> 1080x1080
-    # - custom:        使用下方显式参数
+    # - custom:        
     vlm_input_profile: str = "fullvlm_256"
-    # 若为 True，则 VLM 直接复用 VLA 的主视角输入链路：
-    # agentview_image -> flipud + resize_size。这样与 VLA 预处理完全一致。
+    #  True， VLM  VLA ：
+    # agentview_image -> flipud + resize_size VLA 
     vlm_match_vla_preprocess: bool = False
-    # 若为 True，则在 VLM 图像经过当前 flip/resize 后，再执行一次
-    # 与 task1/breakfast_like 训练集一致的 JPEG 回环。
+    #  True， VLM  flip/resize ，
+    #  task1/breakfast_like  JPEG 
     vlm_match_training_jpeg_roundtrip: bool = False
     vlm_training_jpeg_quality: int = 30
     vlm_match_fullvlm_source_square: bool = True
@@ -157,42 +157,42 @@ class Args:
     vlm_train_width: int = 256
     vlm_train_height: int = 256
     # VLM prompt profile:
-    # - task1_kf5:           5-frame recent context + 历史关键帧 + keyframe_positions
-    # - task1_placeit_nokf:  单帧 + 无关键帧记忆 + {"current_primitive": "..."}
+    # - task1_kf5:           5-frame recent context +  + keyframe_positions
+    # - task1_placeit_nokf:   +  + {"current_primitive": "..."}
     vlm_prompt_profile: str = "task1_kf5"
     vlm_use_keyframe_memory: bool = True
-    # 与训练 wristunlimited 数据对齐：VLM 每个时刻输入主视角 + 腕部视角。
+    #  wristunlimited ：VLM  + 
     vlm_use_wrist: bool = True
-    # 若为 True，当 obs 缺少腕部视角时直接报错（避免静默退化成单相机）。
+    #  True， obs （）
     vlm_wrist_required: bool = False
 
-    # ===== VLA 服务 =====
+    # ===== VLA  =====
     host: str = "0.0.0.0"
     port: int = 8000
     resize_size: int = 224
-    replan_steps: int = 10   # 每次 VLM 输出后，VLA 固定执行 10 步再停下等待
+    replan_steps: int = 10   #  VLM ，VLA  10 
 
-    # ===== VLM 模型 =====
+    # ===== VLM  =====
     base_model_dir: str = "Qwen/Qwen3-VL-8B-Instruct"
     lora_path: str = "none"
     vlm_device: str = "cuda:1"
     max_new_tokens: int = 512
-    vlm_model_type: str = "qwen3_vl"  # 统一使用 Qwen3-VL
+    vlm_model_type: str = "qwen3_vl"  #  Qwen3-VL
     enable_thinking: bool = False
     crop_right_half: bool = False
 
-    # ===== VLM / VLA 调度参数 =====
-    # VLM 异步推理频率：每隔 vlm_interval 步提交一次最新窗口。
+    # ===== VLM / VLA  =====
+    # VLM ： vlm_interval 
     vlm_interval: int = 5
-    n_recent: int = 5         # 短期记忆帧数
-    # 关键帧上限；<=0 表示不设上限（unlimited）
+    n_recent: int = 5         # 
+    # ；<=0 （unlimited）
     k_max: int = 0
-    d_merge: int = 6          # 关键帧合并距离
-    # True: VLM 与 VLA 异步，VLM->VLA 通过单槽 subtask buffer 传递。
+    d_merge: int = 6          # 
+    # True: VLM  VLA ，VLM->VLA  subtask buffer 
     async_vlm: bool = True
     vlm_queue_size: int = 1
 
-    # ===== 评估 =====
+    # =====  =====
     num_steps_wait: int = 5
     num_trials_per_task: int = 3
     max_steps: int = 2000
@@ -201,9 +201,9 @@ class Args:
     websocket_ping_timeout: float | None = None
     websocket_close_timeout: float = 30.0
 
-    # ===== 日志 =====
+    # =====  =====
     log_base: str = "output/task1_sync"
-    run_id: str = ""  # 空则自动用时间戳
+    run_id: str = ""  # 
     video_out_path: str = ""
     task_prompt: str = GLOBAL_PROMPT
 
@@ -297,9 +297,9 @@ def _extract_vlm_frame(
             raw_img = obs.get("agentview_image", obs.get("agentview_rgb"))
         raw_arr = _normalize_rgb_uint8(raw_img)
 
-        # LIBERO 环境原始渲染是倒置的；fullvlm 训练样本使用的是翻正后的图像。
-        # 因此评测时 VLM 也需要先 flipud，再构造 fullvlm 风格的 256x256 中间态，
-        # 最后按训练生成脚本逻辑 resize 到目标尺寸。
+        # LIBERO ；fullvlm 
+        #  VLM  flipud， fullvlm  256x256 ，
+        #  resize 
         rgb_main_vlm = np.flipud(raw_arr)
         if args.vlm_match_fullvlm_source_square:
             rgb_main_vlm = _resize_vlm_like_training(
@@ -388,7 +388,7 @@ def _apply_vlm_prompt_profile(args: Args) -> None:
     if profile == "task1_kf5":
         return
     if profile == "task1_placeit_nokf":
-        # 与 no-kf 训练样本一致：单帧 + 无关键帧记忆
+        #  no-kf ： + 
         args.n_recent = 1
         args.k_max = 0
         args.vlm_use_keyframe_memory = False
@@ -400,7 +400,7 @@ def _apply_vlm_prompt_profile(args: Args) -> None:
     )
 
 
-# 默认（task1 kf5）子任务集合
+# （task1 kf5）
 KNOWN_SUBTASKS_TASK1_KF5 = [
     "pick cookies",
     "place cookies into basket",
@@ -408,14 +408,14 @@ KNOWN_SUBTASKS_TASK1_KF5 = [
     "place tomato into basket",
 ]
 
-# no-kf placeit 子任务集合
+# no-kf placeit 
 KNOWN_SUBTASKS_TASK1_PLACEIT_NOKF = [
     "pick the cookies",
     "place it into the basket",
     "pick the tomato sauce",
 ]
 
-# 默认序列（兼容旧行为）
+# （）
 SUBTASK_SEQUENCE_TASK1_KF5 = [
     "pick cookies",
     "place cookies into basket",
@@ -423,14 +423,14 @@ SUBTASK_SEQUENCE_TASK1_KF5 = [
     "place tomato into basket",
 ]
 
-# no-kf placeit 序列
+# no-kf placeit 
 SUBTASK_SEQUENCE_TASK1_PLACEIT_NOKF = [
     "pick the cookies",
     "place it into the basket",
     "pick the tomato sauce",
 ]
 
-# 保持兼容的别名
+# 
 KNOWN_SUBTASKS = KNOWN_SUBTASKS_TASK1_KF5
 SUBTASK_SEQUENCE = SUBTASK_SEQUENCE_TASK1_KF5
 
@@ -515,7 +515,7 @@ def _write_video(path: pathlib.Path, frames: list[np.ndarray], fps: int = 10) ->
         )
         return
     except Exception as e:
-        logging.warning("imageio 写视频失败，回退到 cv2: %s", e)
+        logging.warning("imageio ， cv2: %s", e)
 
     h, w = norm_frames[0].shape[:2]
     writer = cv2.VideoWriter(
@@ -525,7 +525,7 @@ def _write_video(path: pathlib.Path, frames: list[np.ndarray], fps: int = 10) ->
         (w, h),
     )
     if not writer.isOpened():
-        raise RuntimeError(f"无法创建视频写入器: {path}")
+        raise RuntimeError(f": {path}")
     try:
         for frame in norm_frames:
             cur = frame
@@ -551,24 +551,24 @@ def _parse_output(
     max_pos: int,
     allowed_subtasks: Optional[list[str]] = None,
 ):
-    """解析训练数据风格输出:
+    """:
     {"current_primitive": "...", "keyframe_positions": [...]}
     """
     s = output_text.strip()
 
-    # thinking 模式：提取 </think> 后的最终答案
+    # thinking ： </think> 
     if "</think>" in s:
         idx = s.rfind("</think>")
         s = s[idx + len("</think>"):].strip()
 
-    # 去掉代码块包裹
+    # 
     if s.startswith("```"):
         lines = s.splitlines()[1:]
         if lines and lines[-1].strip().startswith("```"):
             lines = lines[:-1]
         s = "\n".join(lines).strip()
 
-    # 1. 优先尝试解析 JSON（与训练数据对齐）
+    # 1.  JSON（）
     primitive = ""
     keyframe_positions = []
     try:
@@ -587,7 +587,7 @@ def _parse_output(
 
 
 def _crop_right_half(img) -> Image.Image:
-    """裁剪图像右半边"""
+    """"""
     if isinstance(img, np.ndarray):
         img = Image.fromarray(img.astype(np.uint8))
     w, h = img.size
@@ -595,14 +595,14 @@ def _crop_right_half(img) -> Image.Image:
 
 
 def _resize_for_training(img: np.ndarray, width: int, height: int) -> np.ndarray:
-    """将 VLM 输入压缩到训练分辨率（W,H），不改 LIBERO 相机参数。"""
+    """ VLM （W,H）， LIBERO """
     if img.shape[:2] == (height, width):
         return img
     return cv2.resize(img, (width, height), interpolation=cv2.INTER_AREA)
 
 
 def _resize_vlm_like_training(img: np.ndarray, width: int, height: int) -> np.ndarray:
-    """匹配 q3vl_fv_r1 的 fullvlm 生成逻辑：PIL + LANCZOS resize。"""
+    """ q3vl_fv_r1  fullvlm ：PIL + LANCZOS resize"""
     if img.shape[:2] == (height, width):
         return img
     pil = Image.fromarray(img.astype(np.uint8))
@@ -614,7 +614,7 @@ def _resize_vlm_like_training(img: np.ndarray, width: int, height: int) -> np.nd
 
 
 def _jpeg_roundtrip_like_training(img: np.ndarray, quality: int) -> np.ndarray:
-    """匹配 task1/breakfast_like 数据集的 JPEG encode/decode 链路。"""
+    """ task1/breakfast_like  JPEG encode/decode """
     if img.dtype != np.uint8:
         img = np.clip(img, 0, 255).astype(np.uint8)
     pil = Image.fromarray(img)
@@ -626,8 +626,8 @@ def _jpeg_roundtrip_like_training(img: np.ndarray, quality: int) -> np.ndarray:
 
 class SyncLoRAPlanner:
     """
-    同步模式的 Qwen3-VL LoRA VLM Planner（Task1 版本）
-    支持加载 LoRA 权重（PeftModel），可选 thinking、右半裁剪
+     Qwen3-VL LoRA VLM Planner（Task1 ）
+     LoRA （PeftModel）， thinking
     """
 
     def __init__(
@@ -675,7 +675,7 @@ class SyncLoRAPlanner:
             base_model_dir, trust_remote_code=True
         )
         if vlm_model_type == "qwen3_vl":
-            logging.info(f"加载 Qwen3-VL: {base_model_dir}")
+            logging.info(f" Qwen3-VL: {base_model_dir}")
             from transformers import Qwen3VLForConditionalGeneration
 
             self.model = Qwen3VLForConditionalGeneration.from_pretrained(
@@ -686,7 +686,7 @@ class SyncLoRAPlanner:
                 local_files_only=True,
             )
         elif vlm_model_type == "qwen2_5_vl":
-            logging.info(f"加载 Qwen2.5-VL: {base_model_dir}")
+            logging.info(f" Qwen2.5-VL: {base_model_dir}")
             from transformers import Qwen2_5_VLForConditionalGeneration
 
             self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
@@ -697,7 +697,7 @@ class SyncLoRAPlanner:
                 local_files_only=True,
             )
         else:
-            logging.info(f"加载 Qwen3.5: {base_model_dir}")
+            logging.info(f" Qwen3.5: {base_model_dir}")
             from transformers import Qwen3_5ForConditionalGeneration
 
             self.model = Qwen3_5ForConditionalGeneration.from_pretrained(
@@ -708,21 +708,21 @@ class SyncLoRAPlanner:
                 local_files_only=True,
             )
 
-        # 加载 LoRA 权重
+        #  LoRA 
         if lora_path and lora_path.lower() != "none":
             from peft import PeftModel
-            logging.info(f"加载 LoRA 权重: {lora_path}")
+            logging.info(f" LoRA : {lora_path}")
             self.model = PeftModel.from_pretrained(self.model, lora_path)
-            logging.info("LoRA 加载完毕！")
+            logging.info("LoRA ！")
 
         self.model.eval()
-        logging.info(f"模型加载完毕！(thinking={enable_thinking}, crop_right_half={crop_right_half})")
+        logging.info(f"！(thinking={enable_thinking}, crop_right_half={crop_right_half})")
 
-        # 状态变量
+        # 
         self._subtask_idx: int = 0
         self._current_subtask = ""
         self._advance_votes: int = 0
-        self._advance_required: int = 2   # 连续 2 次确认才推进
+        self._advance_required: int = 2   #  2 
         self._completed_subtasks: set[str] = set()
         self.R_main: list[Image.Image] = []
         self.R_wrist: list[Optional[Image.Image]] = []
@@ -735,7 +735,7 @@ class SyncLoRAPlanner:
         self.frame_store_wrist: dict[int, Optional[Image.Image]] = {}
         self._saved_k_indices: set = set()
 
-        # 日志
+        # 
         self._trace_fh = None
         self.run_dir: Optional[pathlib.Path] = None
         self.kf_dir: Optional[pathlib.Path] = None
@@ -746,7 +746,7 @@ class SyncLoRAPlanner:
         run_dir=None,
         logger=None,
     ):
-        """新 episode 重置"""
+        """ episode """
         if self._trace_fh is not None:
             self._trace_fh.close()
             self._trace_fh = None
@@ -782,10 +782,10 @@ class SyncLoRAPlanner:
             self._trace_fh = None
 
         if self.logger:
-            self.logger.info("SyncLoRAPlanner reset: 同步模式就绪")
+            self.logger.info("SyncLoRAPlanner reset: ")
 
     def push_frame(self, main_rgb: np.ndarray, wrist_rgb: Optional[np.ndarray] = None):
-        """保留旧接口；当前异步实现改为按 5 帧窗口直接推理。"""
+        """； 5 """
         m_img = Image.fromarray(main_rgb.astype(np.uint8))
         w_img = (
             Image.fromarray(wrist_rgb.astype(np.uint8))
@@ -804,10 +804,10 @@ class SyncLoRAPlanner:
         context_frames_np: list[tuple[np.ndarray, Optional[np.ndarray]]],
     ) -> str:
         """
-        同步 VLM 推理 — 阻塞直到完成。
-        输入窗口格式由 prompt_profile 决定：
-        - task1_kf5: 5 帧 + 关键帧记忆
-        - task1_placeit_nokf: 单帧 + 无关键帧记忆
+         VLM  — 
+         prompt_profile ：
+        - task1_kf5: 5  + 
+        - task1_placeit_nokf:  + 
         """
         if not context_frames_np:
             return self._current_subtask
@@ -939,7 +939,7 @@ class SyncLoRAPlanner:
 
         subtask = self._current_subtask
 
-        # 保存 VLM 帧和 trace
+        #  VLM  trace
         if self.run_dir is not None:
             image_rel = self._save_vlm_input_bundle(
                 step_idx=step_idx,
@@ -1178,10 +1178,10 @@ def run_episode_async(
     logger: Optional[logging.Logger] = None,
 ) -> tuple[bool, list[np.ndarray]]:
     """
-    单次 rollout（异步模式）:
-    - VLM 线程周期性读取最近窗口并推理，结果写入单槽 subtask buffer。
-    - VLA 主线程持续执行动作，每次 replan 前从 buffer 读取最新 subtask。
-    - VLM 只负责写 buffer，VLA 只负责读 buffer。
+     rollout（）:
+    - VLM ， subtask buffer
+    - VLA ， replan  buffer  subtask
+    - VLM  buffer，VLA  buffer
     """
     obs = env.reset()
     current_subtask_prompt = ""
@@ -1240,7 +1240,7 @@ def run_episode_async(
 
         if logger and step_idx != last_drop_log_step:
             logger.info(
-                "[t=%s] VLM job queue 满，丢弃旧窗口，保留最新窗口",
+                "[t=%s] VLM job queue ，，",
                 step_idx + args.num_steps_wait,
             )
             last_drop_log_step = step_idx
@@ -1262,7 +1262,7 @@ def run_episode_async(
             except Exception as e:
                 worker_error.append(f"{type(e).__name__}: {e}")
                 if logger:
-                    logger.error("VLM worker 异常: %s", e, exc_info=True)
+                    logger.error("VLM worker : %s", e, exc_info=True)
                 break
 
     try:
@@ -1277,7 +1277,7 @@ def run_episode_async(
             vlm_thread.start()
             if logger:
                 logger.info(
-                    "异步模式开启：single-slot subtask buffer + vlm_job_queue(maxsize=%s)",
+                    "：single-slot subtask buffer + vlm_job_queue(maxsize=%s)",
                     queue_size,
                 )
 
@@ -1321,15 +1321,15 @@ def run_episode_async(
                 if logger:
                     if args.async_vlm:
                         logger.info(
-                            "[t=%s] 从 subtask buffer 读取 VLM 输出(step=%s): %s",
+                            "[t=%s]  subtask buffer  VLM (step=%s): %s",
                             t,
                             latest_step,
                             current_subtask_prompt,
                         )
                     else:
-                        logger.info(f"[t={t}] VLM 更新子任务: {current_subtask_prompt}")
+                        logger.info(f"[t={t}] VLM : {current_subtask_prompt}")
                 if current_subtask_prompt == "place tomato into basket" and logger:
-                    logger.info(f"[FINAL_HINT] t={t}, VLM 已输出最终阶段。")
+                    logger.info(f"[FINAL_HINT] t={t}, VLM ")
 
             element = obs_to_pi_element(
                 obs,
@@ -1342,7 +1342,7 @@ def run_episode_async(
 
             if logger:
                 logger.info(
-                    f"[t={t}] VLA 执行 chunk: {args.replan_steps} steps | prompt={current_subtask_prompt or prompt}"
+                    f"[t={t}] VLA  chunk: {args.replan_steps} steps | prompt={current_subtask_prompt or prompt}"
                 )
 
             for chunk_idx, action in enumerate(actions[:args.replan_steps], start=1):
@@ -1360,19 +1360,19 @@ def run_episode_async(
                 t += 1
                 _submit_vlm_job(t - args.num_steps_wait)
 
-                # 以任务成功谓词为主判定成功，避免仅依赖 done 标志。
+                # ， done 
                 try:
                     if env.check_success():
                         if logger:
                             logger.info(f"[SUCCESS] t={t}, env.check_success()=True")
                         return True, replay
                 except Exception:
-                    # 某些环境可能未暴露 check_success，静默回退到 done 判定
+                    #  check_success， done 
                     pass
 
                 if done:
                     if logger:
-                        logger.info(f"[DONE] t={t}, 任务完成！")
+                        logger.info(f"[DONE] t={t}, ！")
                     return True, replay
 
                 if t >= args.max_steps + args.num_steps_wait:
@@ -1382,7 +1382,7 @@ def run_episode_async(
         logging.error(f"KeyError: {e}")
         return False, replay
     except Exception as e:
-        logging.error(f"Episode 失败: {e}", exc_info=True)
+        logging.error(f"Episode : {e}", exc_info=True)
         return False, replay
     finally:
         if args.async_vlm and vlm_job_queue is not None:
@@ -1402,11 +1402,11 @@ def run_episode_async(
 
 
 def eval_task1(args: Args):
-    """Task1 评估入口（cookies + tomato sauce 放入 basket）"""
+    """Task1 （cookies + tomato sauce  basket）"""
     rid = args.run_id or datetime.now().strftime("%Y%m%d_%H%M%S")
     run_root = pathlib.Path(args.log_base) / "task1_sync" / rid
     run_root.mkdir(parents=True, exist_ok=True)
-    logging.info(f"本次 run_id: {rid}，输出目录: {run_root}")
+    logging.info(f" run_id: {rid}，: {run_root}")
     logging.info(f"BDDL: {args.bddl_file}")
     logging.info(
         "VLA env render size: %sx%s | VLM render size: %sx%s",
@@ -1473,8 +1473,8 @@ def eval_task1(args: Args):
                 args.vlm_train_height,
             )
 
-    # 连接 VLA server
-    logging.info("连接 VLA server: ws://%s:%d ...", args.host, args.port)
+    #  VLA server
+    logging.info(" VLA server: ws://%s:%d ...", args.host, args.port)
     client = StableWebsocketClientPolicy(
         args.host,
         args.port,
@@ -1489,7 +1489,7 @@ def eval_task1(args: Args):
         else SYSTEM_PROMPT_TASK1_KF5
     )
 
-    # 初始化同步 VLM planner（带 LoRA）
+    #  VLM planner（ LoRA）
     planner = SyncLoRAPlanner(
         base_model_dir=args.base_model_dir,
         lora_path=args.lora_path,
@@ -1510,8 +1510,8 @@ def eval_task1(args: Args):
     planner.vlm_training_jpeg_roundtrip = args.vlm_match_training_jpeg_roundtrip
     planner.vlm_training_jpeg_quality = args.vlm_training_jpeg_quality
 
-    # 初始化环境
-    logging.info(f"使用 BDDL: {args.bddl_file}")
+    # 
+    logging.info(f" BDDL: {args.bddl_file}")
     try:
         env = OffScreenRenderEnv(
             bddl_file_name=args.bddl_file,
@@ -1524,7 +1524,7 @@ def eval_task1(args: Args):
         )
         _ = env.reset()
     except Exception as e:
-        logging.error(f"环境初始化失败: {e}")
+        logging.error(f": {e}")
         return
 
     vlm_camera_pose = _resolve_openpi_agentview_pose(args.bddl_file)
@@ -1536,7 +1536,7 @@ def eval_task1(args: Args):
             np.asarray(vla_cam_quat).tolist(),
         )
     except Exception as e:
-        logging.warning(f"读取 RoboMemArena agentview 位姿失败: {e}")
+        logging.warning(f" RoboMemArena agentview : {e}")
 
     if args.vlm_use_openpi_camera_pose and vlm_camera_pose is not None:
         logging.info(
@@ -1547,7 +1547,7 @@ def eval_task1(args: Args):
         )
     elif args.vlm_use_openpi_camera_pose:
         logging.warning(
-            "未找到与当前 BDDL 对应的 openpi 相机位姿，VLM 将回退到 RoboMemArena 默认 agentview。"
+            " BDDL  openpi ，VLM  RoboMemArena  agentview"
         )
     elif args.vlm_match_vla_preprocess:
         logging.info("VLM agentview: exact same live obs path as VLA.")
@@ -1574,17 +1574,17 @@ def eval_task1(args: Args):
                 logger=episode_logger,
             )
         except Exception as e:
-            logging.exception(f"Episode {ep} 崩溃: {e}")
+            logging.exception(f"Episode {ep} : {e}")
             success, replay = False, []
 
-        # 保存视频
+        # 
         suffix = "success" if success else "failure"
         out_name = f"task1_{suffix}_ep{ep}.mp4"
         if replay:
             try:
                 _write_video(pathlib.Path(args.video_out_path) / out_name, replay, fps=10)
             except Exception:
-                logging.exception("写视频失败: %s", pathlib.Path(args.video_out_path) / out_name)
+                logging.exception(": %s", pathlib.Path(args.video_out_path) / out_name)
 
         total_success += int(success)
         episode_logger.info(f"Episode {ep}: {'SUCCESS' if success else 'FAILURE'}")
@@ -1598,7 +1598,7 @@ def eval_task1(args: Args):
 
     success_rate = total_success / max(1, args.num_trials_per_task)
     logging.warning(
-        f"[Task1 结果] 成功率={total_success}/{args.num_trials_per_task} ({success_rate:.2%})"
+        f"[Task1 ] ={total_success}/{args.num_trials_per_task} ({success_rate:.2%})"
     )
 
 

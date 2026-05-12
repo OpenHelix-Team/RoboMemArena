@@ -719,10 +719,10 @@ def _task_specs(task_id: int) -> list[StageSpec]:
 
 def _goal_override_check(task_id: int) -> Callable[[Any, dict[str, bool]], bool] | None:
     if task_id in {10, 15, 18, 19}:
-        # 这些任务把「所有阶段完成」直接视为 goal 成功。
+        #  goal 
         return lambda env, stage_done: all(stage_done.values())
     if task_id in {6, 7, 8, 9, 16}:
-        # 对这组「倒酱 + 放回 bowl drainer」任务，goal 以最后阶段判定为准。
+        #  +  bowl drainer，goal 
         place_bowl_drainer = _in_container_body("tomato_sauce_1", "bowl_drainer_1", 0.15, -0.05, 0.20)
         return lambda env, stage_done: place_bowl_drainer(env, {}, 0)
     return None
@@ -816,12 +816,12 @@ def run_episode_with_stateful_stages(
                 spec = stage_specs[stage_idx]
                 if spec.check_fn(env, state, current_stage_start):
                     stage_done[spec.name] = True
-                    logging.info(f"  [t={t}] 阶段完成: {spec.name}")
+                    logging.info(f"  [t={t}] : {spec.name}")
                     stage_idx += 1
                     current_stage_start = state["step_idx"]
 
             if stage_idx >= len(stage_specs) and not all_stages_logged:
-                logging.info(f"  [t={t}] 所有阶段完成!")
+                logging.info(f"  [t={t}] !")
                 all_stages_logged = True
 
             if goal_check_override is not None:
@@ -829,7 +829,7 @@ def run_episode_with_stateful_stages(
             else:
                 goal_success = ec.check_goal_success(env, goal_monitor_dict) if goal_monitor_dict else False
             if goal_success:
-                logging.info(f"  [t={t}] BDDL goal 达成，提前结束!")
+                logging.info(f"  [t={t}] BDDL goal ，!")
                 break
 
             if done:
@@ -978,13 +978,13 @@ def run_eval_task(
     n = num_trials_per_task
     avg_score = total_score / max(1, n)
     logging.info("============================================================")
-    logging.info(f"最终结果 - 阶段成功率: 平均 = {avg_score:.1f}%")
+    logging.info(f" - :  = {avg_score:.1f}%")
     for name, cnt in stage_totals.items():
         logging.info(f"  {name}: {cnt}/{n} ({(cnt / max(1, n)) * 100:.0f}%)")
     if goal_monitor_dict:
         goal_pct = 100.0 * goal_succ_cnt / max(1, n)
-        logging.info(f"最终结果 - BDDL goal 总成功率: {goal_succ_cnt}/{n} ({goal_pct:.1f}%)")
-    logging.info(f"视频输出: {video_dir}")
+        logging.info(f" - BDDL goal : {goal_succ_cnt}/{n} ({goal_pct:.1f}%)")
+    logging.info(f": {video_dir}")
     logging.info("============================================================")
 
 

@@ -45,23 +45,23 @@ def _process_image_match_training(x: np.ndarray, size: int) -> np.ndarray:
     1. np.flipud (Fix Robosuite upside-down)
     2. cv2.resize (Force resize/squish to target size, ignoring aspect ratio)
     """
-    # 1. 确保是 HWC 格式
+    # 1.  HWC 
     if x.ndim == 3 and x.shape[0] in (1, 3) and x.shape[-1] != 3:
         x = np.transpose(x, (1, 2, 0))
     
-    # 2. 转换为 uint8
+    # 2.  uint8
     if x.dtype != np.uint8:
         if x.max() <= 1.0:
             x = (np.clip(x, 0.0, 1.0) * 255).astype(np.uint8)
         else:
             x = np.clip(x, 0, 255).astype(np.uint8)
 
-    # 3. 🔥 关键修正 A: 只做垂直翻转 (flipud)，不做水平翻转
-    # 对应 DataRecorder: img = np.flipud(img)
+    # 3. 🔥  A:  (flipud)，
+    #  DataRecorder: img = np.flipud(img)
     x = np.flipud(x)
 
-    # 4. 🔥 关键修正 B: 暴力缩放 (Squish)，不留黑边
-    # 对应 DataRecorder: cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA)
+    # 4. 🔥  B:  (Squish)，
+    #  DataRecorder: cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA)
     if x.shape[0] != size or x.shape[1] != size:
         x = cv2.resize(x, (size, size), interpolation=cv2.INTER_AREA)
         
@@ -133,17 +133,17 @@ def obs_to_pi_element(
     state = _extract_state(obs)
     processed_main, processed_wrist = _extract_images(obs, resize_size)
 
-    # --- 4. 构造 OpenPI 需要的字典 ---
-    # 为了兼容 pi0 模型的 3 个 image slot，我们手动填充
+    # --- 4.  OpenPI  ---
+    #  pi0  3  image slot，
     element = {
-        # 对应 Config 里的映射 (通常 base -> agentview)
+        #  Config  ( base -> agentview)
         "observation/image": processed_main,
         "observation/wrist_image": processed_wrist,
         
-        # 显式提供具体的 key 名字，防止 server 端映射出错
+        #  key ， server 
         "base_0_rgb": processed_main,
-        "left_wrist_0_rgb": np.zeros_like(processed_wrist), # 填充全黑 (单臂机器人无左手)
-        "right_wrist_0_rgb": processed_wrist,               # 假设 eye_in_hand 映射为右手
+        "left_wrist_0_rgb": np.zeros_like(processed_wrist), #  ()
+        "right_wrist_0_rgb": processed_wrist,               #  eye_in_hand 
         
         "observation/state": state,
         "prompt": "" if prompt is None else str(prompt),

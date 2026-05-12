@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-从 avi 文件名提取的 task prompt（下划线转空格）
-用于 eval_task1_only / eval_full_trajectory_batch
+ avi  task prompt（）
+ eval_task1_only / eval_full_trajectory_batch
 """
-# task_id -> prompt (从 taskN_xxx.avi 提取)
+# task_id -> prompt ( taskN_xxx.avi )
 TASK_PROMPTS = {
     "task1": "pick and place cookies in basket and place tomato sauce into where cookies was placed",
     "task2": "pick and place butter in basket and place popcorn into where butter was placed",
@@ -35,7 +35,7 @@ TASK_PROMPTS = {
 
 
 def get_prompt(task_id: str, fallback_task_name: str = "") -> str:
-    """获取 task 的 prompt，若无则用 fallback_task_name.replace('_', ' ')"""
+    """ task  prompt， fallback_task_name.replace('_', ' ')"""
     if task_id in TASK_PROMPTS:
         return TASK_PROMPTS[task_id]
     return fallback_task_name.replace("_", " ") if fallback_task_name else ""

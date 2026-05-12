@@ -304,7 +304,7 @@ def run_episode_with_stages(
     mem_policy: bool = False,
     mem_obs_steps: int = 4,
 ) -> tuple[float, dict[str, bool], bool, list[np.ndarray], list[np.ndarray]]:
-    """带阶段检查的 episode，返回 (score, stage_done, goal_success, replay, replay_wrist)"""
+    """ episode， (score, stage_done, goal_success, replay, replay_wrist)"""
     obs = env.reset()
     replay: list[np.ndarray] = []
     replay_wrist: list[np.ndarray] = []
@@ -345,15 +345,15 @@ def run_episode_with_stages(
                     prev_all_done = all(stage_done[n] for n, _ in stage_checks[:i])
                     if prev_all_done and check_fn(env):
                         stage_done[name] = True
-                        logging.info(f"  [t={t}] 阶段完成: {name}")
+                        logging.info(f"  [t={t}] : {name}")
             else:
                 for name, check_fn in stage_checks:
                     if not stage_done[name] and check_fn(env):
                         stage_done[name] = True
-                        logging.info(f"  [t={t}] 阶段完成: {name}")
+                        logging.info(f"  [t={t}] : {name}")
 
             if all(stage_done.values()):
-                logging.info(f"  [t={t}] 所有阶段完成!")
+                logging.info(f"  [t={t}] !")
                 break
 
             if done:
@@ -380,7 +380,7 @@ def run_episode_simple(
     mem_policy: bool = False,
     mem_obs_steps: int = 4,
 ) -> tuple[bool, bool, list[np.ndarray], list[np.ndarray]]:
-    """用 env done 判定，返回 (env_done_success, goal_success, replay, replay_wrist)"""
+    """ env done ， (env_done_success, goal_success, replay, replay_wrist)"""
     obs = env.reset()
     replay: list[np.ndarray] = []
     replay_wrist: list[np.ndarray] = []
@@ -559,14 +559,14 @@ def run_eval(
     logging.info("============================================================")
     if use_stage_check:
         avg_score = total_score / max(1, n)
-        logging.info(f"最终结果 - 阶段成功率: 平均 = {avg_score:.1f}%")
+        logging.info(f" - :  = {avg_score:.1f}%")
         for name, cnt in stage_totals.items():
             logging.info(f"  {name}: {cnt}/{n} ({(cnt / max(1, n)) * 100:.0f}%)")
     else:
         env_pct = 100.0 * env_done_cnt / max(1, n)
-        logging.info(f"最终结果 - env done 成功率: {env_done_cnt}/{n} ({env_pct:.1f}%)")
+        logging.info(f" - env done : {env_done_cnt}/{n} ({env_pct:.1f}%)")
     if goal_monitor_dict:
         goal_pct = 100.0 * goal_succ_cnt / max(1, n)
-        logging.info(f"最终结果 - BDDL goal 总成功率: {goal_succ_cnt}/{n} ({goal_pct:.1f}%)")
-    logging.info(f"视频输出: {video_dir}")
+        logging.info(f" - BDDL goal : {goal_succ_cnt}/{n} ({goal_pct:.1f}%)")
+    logging.info(f": {video_dir}")
     logging.info("============================================================")
