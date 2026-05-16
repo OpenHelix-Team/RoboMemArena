@@ -4,6 +4,8 @@ This folder provides reference VLM/VLA evaluation code for RoboMemArena.
 
 We provide a quick start at `task1_nomap_reference/`. If you want to train/evaluate all tasks, please use `tasks2_26_vlm5_reference/` for VLM5 Tasks 2-26.
 
+The required Python/runtime environment is the official OpenPI environment. Please install and activate OpenPI first, then set the local paths and checkpoints described below.
+
 The reference evaluation folder is `evaluation_benchmark/reference_evaluation/`.
 Async reference code is kept separately in `evaluation_benchmark/async_vlm26_reference/`.
 For async evaluation logic reference, see [Async 26-Task Reference Evaluation](../async_vlm26_reference/README.md).
