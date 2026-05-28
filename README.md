@@ -9,19 +9,6 @@ RoboMemArena is a comprehensive and challenging robotic memory benchmark with 26
 [![Leaderboard Results](https://img.shields.io/badge/Leaderboard-Results-007ec6?style=for-the-badge)](https://robomemarena.github.io/leaderboard.html)
 [![Dataset Hugging Face](https://img.shields.io/badge/Dataset-Hugging%20Face-f3b900?style=for-the-badge)](https://huggingface.co/datasets/RoboMemArenaBenchmark/RoboMemArena)
 
-## Citation
-
-If you find RoboMemArena useful in your research, please cite:
-
-```bibtex
-@article{robomemarena2025,
-  title   = {RoboMemArena: A Comprehensive and Challenging Robotic Memory Benchmark},
-  author  = {Huashuo Lei and Wenxuan Song and Huarui Zhang and Jieyuan Pei and Jiayi Chen and Haodong Yan and Han Zhao and Pengxiang Ding and Zhipeng Zhang and Lida Huang and Donglin Wang and Yan Wang and Haoang Li},
-  journal = {arXiv preprint arXiv:2605.10921},
-  year    = {2026}
-}
-```
-
 ## Dataset Structure
 
 The dataset is hosted on Hugging Face:
@@ -170,3 +157,16 @@ https://github.com/QwenLM/Qwen3-VL?tab=readme-ov-file#using-transformers-to-chat
 ## Contact
 
 For questions, please contact me via WeChat: `leshuaigeye` or email: `leihuashuohit@gmail.com`.
+
+## Citation
+
+If you find RoboMemArena useful in your research, please cite:
+
+```bibtex
+@article{robomemarena2025,
+  title   = {RoboMemArena: A Comprehensive and Challenging Robotic Memory Benchmark},
+  author  = {Huashuo Lei and Wenxuan Song and Huarui Zhang and Jieyuan Pei and Jiayi Chen and Haodong Yan and Han Zhao and Pengxiang Ding and Zhipeng Zhang and Lida Huang and Donglin Wang and Yan Wang and Haoang Li},
+  journal = {arXiv preprint arXiv:2605.10921},
+  year    = {2026}
+}
+```
