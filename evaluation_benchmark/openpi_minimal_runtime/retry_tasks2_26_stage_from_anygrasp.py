@@ -70,12 +70,16 @@ DRAWER_TASK_OPTIONAL_FINAL_STAGE = {
     17: "04_Close_Middle_Drawer",
 }
 
+TASK22_OPTIONAL_FINAL_STAGE = "07_Close_Microwave"
+
 
 def _is_drawer_task(task_id: int | None) -> bool:
     return task_id in DRAWER_TASK_OPTIONAL_FINAL_STAGE
 
 
 def _optional_final_stage_name(task_id: int | None) -> str | None:
+    if task_id == 22:
+        return TASK22_OPTIONAL_FINAL_STAGE
     return DRAWER_TASK_OPTIONAL_FINAL_STAGE.get(task_id)
 
 
@@ -872,7 +876,21 @@ def _task_specs(task_id: int) -> list[StageSpec]:
             StageSpec("04_Close_Microwave", _microwave_closed(0.05)),
         ]
     if task_id == 22:
-        return _counting_pour_stages("tomato_sauce_1", "Tomato_Sauce", "body", "cookies_1")
+        return [
+            *_counting_pour_stages("tomato_sauce_1", "Tomato_Sauce", "body", "cookies_1"),
+            StageSpec(
+                "04_Place_Tomato_Aside",
+                _near_fixed_position(
+                    "tomato_sauce_1",
+                    np.array([0.0, -0.2, 0.50], dtype=np.float32),
+                    0.20,
+                    0.20,
+                ),
+            ),
+            StageSpec("05_Open_Microwave", _microwave_open(0.30)),
+            StageSpec("06_Place_Cookies_Microwave", _in_microwave("cookies_1")),
+            StageSpec(TASK22_OPTIONAL_FINAL_STAGE, _microwave_closed(0.05)),
+        ]
     if task_id == 23:
         return [
             StageSpec("01_Open_Microwave", _microwave_open(0.50)),
@@ -901,7 +919,9 @@ def _task_specs(task_id: int) -> list[StageSpec]:
 
 
 def _goal_override_check(task_id: int) -> Callable[[Any, dict[str, bool]], bool] | None:
-    if task_id in {6, 7, 8, 9, 10, 15, 16, 18, 19, 22}:
+    if task_id == 22:
+        return lambda env, stage_done: _stage_success_from_stage_done(task_id, stage_done)
+    if task_id in {6, 7, 8, 9, 10, 15, 16, 18, 19}:
         # These tasks treat completing all ordered stages as goal success.
         return lambda env, stage_done: all(stage_done.values())
     return None

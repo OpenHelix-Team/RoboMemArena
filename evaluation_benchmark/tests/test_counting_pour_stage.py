@@ -63,6 +63,73 @@ class _Adapter:
 
 
 class CountingPourStageTest(unittest.TestCase):
+    def test_task22_requires_microwave_stages_but_not_final_close(self) -> None:
+        names = [spec.name for spec in stages._task_specs(22)]
+        self.assertEqual(
+            names,
+            [
+                "01_Lift_Tomato_Sauce",
+                "02_Pour_One",
+                "03_Pour_Two",
+                "04_Place_Tomato_Aside",
+                "05_Open_Microwave",
+                "06_Place_Cookies_Microwave",
+                "07_Close_Microwave",
+            ],
+        )
+
+        stage_done = {name: True for name in names}
+        stage_done["07_Close_Microwave"] = False
+        self.assertEqual(stages._counted_stage_names(22, stage_done), names[:-1])
+        self.assertTrue(stages._stage_success_from_stage_done(22, stage_done))
+        self.assertEqual(stages._stage_score_pct(22, stage_done), 100.0)
+
+        stage_done["05_Open_Microwave"] = False
+        self.assertFalse(stages._stage_success_from_stage_done(22, stage_done))
+
+    def test_task22_ends_after_required_stages_without_close(self) -> None:
+        names = [spec.name for spec in stages._task_specs(22)]
+        specs = [
+            stages.StageSpec(name, lambda env, state, start: state["step_idx"] > start)
+            for name in names[:-1]
+        ]
+        specs.append(stages.StageSpec(names[-1], lambda env, state, start: False))
+
+        def update_state(obs, state):
+            del obs
+            state["step_idx"] += 1
+
+        with (
+            mock.patch.object(eval_tasks, "_build_initial_state", return_value={"step_idx": 0}),
+            mock.patch.object(eval_tasks, "_update_state", side_effect=update_state),
+            mock.patch.object(eval_tasks, "_is_counting_pour_task", return_value=True),
+            mock.patch.object(eval_tasks, "_extra_pour_check", return_value=lambda env, state, start: False),
+            mock.patch.object(
+                eval_tasks,
+                "build_eval26_policy_input",
+                return_value=({}, np.zeros((2, 2, 3), dtype=np.uint8), np.zeros((2, 2, 3), dtype=np.uint8)),
+            ),
+        ):
+            _, stage_done, _, diagnostics, _, _ = eval_tasks.run_episode_with_stateful_stages(
+                task_id=22,
+                env=_RolloutEnv(),
+                adapter=_Adapter(),
+                prompt="test",
+                resize_size=2,
+                replan_steps=1,
+                num_steps_wait=0,
+                max_steps=20,
+                post_goal_steps=200,
+                stage_specs=specs,
+                goal_monitor_dict={},
+                goal_check_override=None,
+                fail_on_extra_pour=False,
+                extra_pour_monitor_steps=30,
+            )
+
+        self.assertTrue(diagnostics["stage_success"])
+        self.assertFalse(stage_done["07_Close_Microwave"])
+
     def test_counting_stage_maps(self) -> None:
         expected = {
             6: ["01_Lift_Tomato_Sauce", "02_Pour_One", "03_Pour_Two"],

@@ -629,7 +629,7 @@ def run_episode_with_stateful_stages(
                     f"  [t={t}] Required stages completed. Continuing {post_goal_steps} more steps before exit."
                 )
 
-            all_stages_complete = bool(stage_done) and all(stage_done.values())
+            required_stages_complete = _stage_success_from_stage_done(task_id, stage_done)
             extra_monitor_complete = (
                 not fail_on_extra_pour
                 or (
@@ -642,7 +642,7 @@ def run_episode_with_stateful_stages(
             if not counting_pour_task and goal_reached_t is not None and (t - goal_reached_t) >= post_goal_steps:
                 break
             if counting_pour_task:
-                if extra_pour_detected or (all_stages_complete and extra_monitor_complete):
+                if extra_pour_detected or (required_stages_complete and extra_monitor_complete):
                     break
             t += 1
     except Exception as exc:
