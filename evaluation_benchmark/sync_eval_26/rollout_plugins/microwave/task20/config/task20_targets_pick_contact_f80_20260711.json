@@ -1,0 +1,33 @@
+{
+  "tasks": {
+    "20": {
+      "subtasks": {
+        "open microwave": {
+          "target_ee_pos": [-0.32224828410811207, 0.22912618296257603, 0.5860172031829288],
+          "hold_gripper": 1.0
+        },
+        "pick cookies": {
+          "target_ee_pos": [0.1611, -0.0943, 0.4377],
+          "hold_gripper": 1.0
+        },
+        "place cookies": {
+          "target_ee_pos": [0.04809184653587573, 0.3121768009410773, 0.7080054364769487],
+          "hold_gripper": -1.0
+        },
+        "pick chocolate": {
+          "target_ee_pos": [0.1671, -0.1973, 0.4408],
+          "hold_gripper": 1.0
+        },
+        "place chocolate": {
+          "target_ee_pos": [0.048124738129522324, 0.31221162576979855, 0.7079772543024838],
+          "hold_gripper": -1.0
+        },
+        "close microwave": {
+          "target_ee_pos": [-0.02136597030583257, 0.18164666041889205, 0.7663524607366078],
+          "hold_gripper": -1.0
+        }
+      }
+    }
+  },
+  "note": "Task20 EEF-only target override: pick targets use seed104 pick HDF frame80 contact/closed-gripper height instead of tail lifted pose. No object state or object reset."
+}

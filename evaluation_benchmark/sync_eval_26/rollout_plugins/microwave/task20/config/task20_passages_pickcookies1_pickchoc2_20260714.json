@@ -1,0 +1,27 @@
+{
+  "tasks": {
+    "20": {
+      "subtasks": {
+        "open microwave": {
+          "required_near_segments": 1
+        },
+        "pick cookies": {
+          "required_near_segments": 1
+        },
+        "place cookies": {
+          "required_near_segments": 1
+        },
+        "pick chocolate": {
+          "required_near_segments": 2
+        },
+        "place chocolate": {
+          "required_near_segments": 1
+        },
+        "close microwave": {
+          "required_near_segments": 1
+        }
+      }
+    }
+  },
+  "note": "Single-variable Task20 test: defer the EEF-only pick-chocolate hold until the second target passage so the first descent can finish the natural grasp and lift. No object, lift, gripper, stage, completed, or oracle gate is used."
+}

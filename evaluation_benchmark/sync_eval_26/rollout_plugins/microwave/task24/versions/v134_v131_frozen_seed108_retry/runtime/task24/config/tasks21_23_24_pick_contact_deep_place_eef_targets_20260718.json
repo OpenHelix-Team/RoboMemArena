@@ -1,0 +1,365 @@
+{
+  "metadata": {
+    "hold_signal": "EEF position only; no object/region/lift/gripper gate",
+    "pick_aggregation": "coordinate-wise median across seeds100-199",
+    "pick_selection": "10 frames after first gripper action > 0.5",
+    "place_selection": "first demonstrated release pose from source_base",
+    "source_base": "derived_from_original_v131_targets"
+  },
+  "tasks": {
+    "20": {
+      "subtasks": {
+        "close microwave": {
+          "hold_gripper": -1.0,
+          "target_ee_pos": [
+            -0.02136597030583257,
+            0.18164666041889205,
+            0.7663524607366078
+          ]
+        },
+        "open microwave": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            -0.32224828410811207,
+            0.22912618296257603,
+            0.5860172031829288
+          ]
+        },
+        "pick chocolate": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            0.16579046848651122,
+            -0.1956264098662997,
+            0.5604629157881107
+          ]
+        },
+        "pick cookies": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            0.16622735788122078,
+            -0.09574197099788156,
+            0.5569175209935434
+          ]
+        },
+        "place chocolate": {
+          "hold_gripper": -1.0,
+          "release_index_max": 180,
+          "release_index_median": 180,
+          "release_index_min": 180,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.027067523935067082,
+            0.46998452702045457,
+            0.5743046225620031
+          ]
+        },
+        "place cookies": {
+          "hold_gripper": -1.0,
+          "release_index_max": 170,
+          "release_index_median": 170,
+          "release_index_min": 170,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.01747113251056611,
+            0.47065348355050834,
+            0.5775155603520985
+          ]
+        }
+      }
+    },
+    "21": {
+      "subtasks": {
+        "close microwave": {
+          "hold_gripper": -1.0,
+          "target_ee_pos": [
+            0.04888017489426332,
+            0.16152995150494615,
+            0.7664436654703422
+          ]
+        },
+        "open microwave": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            -0.2969425510711935,
+            0.22245016349195684,
+            0.5873899524961211
+          ]
+        },
+        "pick butter": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1.0,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16448986639901952,
+            -0.09461996683505572,
+            0.43705415813754245
+          ]
+        },
+        "pick chocolate": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1.0,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16725719115042204,
+            -0.19202005691769247,
+            0.4408878995885924
+          ]
+        },
+        "place butter": {
+          "hold_gripper": -1.0,
+          "release_index_max": 170,
+          "release_index_median": 170,
+          "release_index_min": 170,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.01629123053502636,
+            0.4708112540072388,
+            0.581631049678823
+          ]
+        },
+        "place chocolate": {
+          "hold_gripper": -1.0,
+          "release_index_max": 180,
+          "release_index_median": 180,
+          "release_index_min": 180,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.02710520647040062,
+            0.4699856939182325,
+            0.5743239749541225
+          ]
+        }
+      }
+    },
+    "22": {
+      "subtasks": {
+        "close microwave": {
+          "hold_gripper": -1.0,
+          "target_ee_pos": [
+            -0.021376065336246343,
+            0.18167627714881182,
+            0.7663580275953004
+          ]
+        },
+        "open microwave": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            -0.37088591706096913,
+            0.12320294941094787,
+            0.5658418641377833
+          ]
+        },
+        "pick cookies": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            0.1670494299591865,
+            -0.1952945923741794,
+            0.7258149888168913
+          ]
+        },
+        "pick tomato": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            -0.03329862389341168,
+            -0.19556333254605934,
+            0.8077741548726556
+          ]
+        },
+        "place cookies": {
+          "hold_gripper": -1.0,
+          "release_index_max": 170,
+          "release_index_median": 170,
+          "release_index_min": 170,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.005118651975818664,
+            0.4713497783018239,
+            0.5723566899800108
+          ]
+        },
+        "place tomato aside": {
+          "hold_gripper": -1.0,
+          "target_ee_pos": [
+            -0.050277949892258436,
+            -0.10203704816343968,
+            0.6953492758748352
+          ]
+        },
+        "pour first": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            0.17067293108454493,
+            -0.19607744382535963,
+            0.6842859268774838
+          ]
+        },
+        "pour second": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            0.17014059037103707,
+            -0.1957386655497139,
+            0.6836068237900078
+          ]
+        }
+      }
+    },
+    "23": {
+      "subtasks": {
+        "close microwave": {
+          "hold_gripper": -1.0,
+          "target_ee_pos": [
+            0.04887857847410949,
+            0.16153414133823885,
+            0.7664441650803799
+          ]
+        },
+        "open microwave": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            -0.2969425510711933,
+            0.2224501634919569,
+            0.5873899524961215
+          ]
+        },
+        "pick cream": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1.0,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16656412437205953,
+            -0.09305050774942734,
+            0.43732613984571966
+          ]
+        },
+        "pick popcorn": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1.0,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16618013456489644,
+            -0.19292873455804857,
+            0.43777372226453104
+          ]
+        },
+        "place cream": {
+          "hold_gripper": -1.0,
+          "release_index_max": 170,
+          "release_index_median": 170,
+          "release_index_min": 170,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.019232438381725517,
+            0.4705668570856793,
+            0.5792879206095933
+          ]
+        },
+        "place popcorn": {
+          "hold_gripper": -1.0,
+          "release_index_max": 180,
+          "release_index_median": 180,
+          "release_index_min": 180,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.012843349462718756,
+            0.47132692891955297,
+            0.589251471874422
+          ]
+        }
+      }
+    },
+    "24": {
+      "subtasks": {
+        "close microwave": {
+          "hold_gripper": -1.0,
+          "target_ee_pos": [
+            -0.02136542460475716,
+            0.1816465440936088,
+            0.7663534583164093
+          ]
+        },
+        "open microwave": {
+          "hold_gripper": 1.0,
+          "target_ee_pos": [
+            -0.3222482841081085,
+            0.22912618296257287,
+            0.586017203182934
+          ]
+        },
+        "pick cookies": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1.0,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.1652577095020189,
+            -0.09400141506176377,
+            0.43780236515599896
+          ]
+        },
+        "pick popcorn": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1.0,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16618015502485017,
+            -0.19292897472500092,
+            0.4377736185930255
+          ]
+        },
+        "place cookies": {
+          "hold_gripper": -1.0,
+          "release_index_max": 170,
+          "release_index_median": 170,
+          "release_index_min": 170,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.01978510324586101,
+            0.4704984108633078,
+            0.5775655104858598
+          ]
+        },
+        "place popcorn": {
+          "hold_gripper": -1.0,
+          "release_index_max": 180,
+          "release_index_median": 180,
+          "release_index_min": 180,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.011423481969651176,
+            0.4715015731407072,
+            0.5909787707491088
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "tasks": {
+    "20": [
+      {
+        "released": "open microwave",
+        "next": "pick cookies",
+        "anchor_hdf5": "${TASK20_DATA_ROOT}/pick_cookies_1_seed104_task20.hdf5",
+        "frame_idx": 70,
+        "tag": "t20_open_microwave_to_pick_cookies_robotonly_f70_contact_height_open_gripper"
+      },
+      {
+        "released": "place cookies",
+        "next": "pick chocolate",
+        "anchor_hdf5": "${TASK20_DATA_ROOT}/pick_chocolate_3_seed104_task20.hdf5",
+        "frame_idx": 0,
+        "tag": "t20_place_cookies_to_pick_chocolate_robotonly_f0"
+      }
+    ]
+  }
+}

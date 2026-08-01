@@ -1,0 +1,59 @@
+task_id: 7
+task_name: pour_tomato_sauce_frypan
+status: frozen-success
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/7_pour_tomato_sauce_into_frypan.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 100
+seed_mode: fixed
+replan_steps: 5
+max_steps: 2500
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 1
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/run_autonomous_task.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+  EVALUATOR_FILE_OVERRIDE: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+  HOST: 127.0.0.1
+  POST_STAGE_STEPS: '30'
+  VLM_INTERVAL: '25'
+  HOLD_AFTER_REQUIRED_STAGES: '0'
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: counting
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/run_autonomous_task.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/make_vlm_eval_ready_checkpoint.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/serve_policy_selfcontained.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/train_task7_evalpour1_hardcase.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/evaluators/autonomous_prompt_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/run_autonomous_task.sh
+  : e95eeb49aa616a9e72a17b59343d22abb0e18d205d6e96d977dc5f7102fc0fd1
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/make_vlm_eval_ready_checkpoint.sh
+  : bc38050638152cfb19e49e423a9ce0a23d82b8bfead9c2dc6aeb01a6f4367f49
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/serve_policy_selfcontained.py
+  : 79f54645ce998e5bef22a7b70ec04b4cb227c2de29abd26865fbf0db39f984b0
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/scripts/train_task7_evalpour1_hardcase.sh
+  : 9ab81705ac0ed07c32a6c08d61485de5c026fc018c18b49dc070b5fccc5d41cc
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/evaluators/autonomous_prompt_guard.py
+  : ee1c74f80d2c4353206eb8c6373102f60a2b9070e8cbeaa00e98f9ee0b37b963
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task7_vlm35999_latest_d9f83ac_hardcase500_20260724/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+  : dbb559b8a550c70c9d67ec072db7b054fddd858a4dd67672d06d920a1ca4bed5
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD

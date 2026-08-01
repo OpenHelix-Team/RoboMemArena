@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "purpose": "Task24 v124 single-variable smoke: restore only the robot/gripper reset after VLM has emitted place cookies.",
+    "object_anchor": false,
+    "oracle_prompt": false,
+    "pick_to_place_anchor": true,
+    "source": "task24 v131 robot-only anchor contract"
+  },
+  "tasks": {
+    "24": [
+      {
+        "released": "open microwave",
+        "next": "pick cookies",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/24_cookies_popcorn_microwave_dataset/subtask_data/pick_cookies_1_seed104_task24.hdf5",
+        "frame_idx": 0,
+        "tag": "t24_open_microwave_to_pick_cookies_robotonly_f0"
+      },
+      {
+        "released": "pick cookies",
+        "next": "place cookies",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/24_cookies_popcorn_microwave_dataset/subtask_data/place_cookies_2_seed104_task24.hdf5",
+        "frame_idx": 40,
+        "tag": "t24_pick_cookies_to_place_cookies_robotonly_f40"
+      },
+      {
+        "released": "place cookies",
+        "next": "pick popcorn",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/24_cookies_popcorn_microwave_dataset/subtask_data/pick_popcorn_3_seed104_task24.hdf5",
+        "frame_idx": 40,
+        "tag": "t24_place_cookies_to_pick_popcorn_robotonly_f40"
+      }
+    ]
+  }
+}

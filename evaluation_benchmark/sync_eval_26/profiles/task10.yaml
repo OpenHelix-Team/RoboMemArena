@@ -1,0 +1,60 @@
+task_id: 10
+task_name: pour_wine_mug_twice
+status: frozen-success
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/10_pour_wine_bottle_into_mug.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 100
+seed_mode: increment
+replan_steps: 1
+max_steps: 2500
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 0
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/run_task10_10ep.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: counting
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/run_task10_10ep.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/scripts/run_autonomous_task.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/scripts/serve_policy_selfcontained.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/scripts/submit_autonomous_task.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/autonomous_prompt_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/eval_counting_stageprompt_d9f83ac.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/eval_counting_task10_pour_return_assist_d9f83ac.py
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/run_task10_10ep.sh
+  : 197e8c988057688ad78190f2ce222af89522023d4c9518025cb49cf259599f72
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/scripts/run_autonomous_task.sh
+  : 59ec49a7d303b2222110458c9b7bffd66cd70850c6f6781803cd143953ba65b5
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/scripts/serve_policy_selfcontained.py
+  : 7dbe42588219d47565de80cfcfa2850defde13055034ad052dc7273448616c8d
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/scripts/submit_autonomous_task.sh
+  : 796dd5a76ceb3315a02a4bdc81195db3d6c0782b22abb1c786849674115253e7
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/autonomous_prompt_guard.py
+  : 283a3d3c09e1a90d863c4ecc6d88e1a5db5f61e9e9d3c0a3a575f509b2936a42
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+  : 48dc501b96e7341e3e255e09f38a9857e7dac9498b80ed0feab8205fccc40e62
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/eval_counting_stageprompt_d9f83ac.py
+  : 77a12139027fe89b0b36f503fb7178722b4b3f1ff8b7ffb6f4db56dc6a7c6ccb
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task10_vlm35999_d9f83ac_pourreturnassist_20260724/evaluators/eval_counting_task10_pour_return_assist_d9f83ac.py
+  : 34485108d998cb40f183738d353dc72fd48afd0e82f6efc2d847a792f6170641
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD

@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "purpose": "Task22 v2: robot/gripper-only resets after a VLM-selected next pour prompt.",
+    "oracle_prompt": false,
+    "object_anchor": false,
+    "stage_prompt_override": false
+  },
+  "tasks": {
+    "22": [
+      {
+        "released": "pick tomato",
+        "next": "pour first",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/22_pour_tomato_cookies_microwave_dataset/subtask_data/pour_first_1_seed104_task22.hdf5",
+        "frame_idx": 0,
+        "tag": "t22_pick_tomato_to_pour_first_robotonly_f0"
+      },
+      {
+        "released": "pour first",
+        "next": "pour second",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/22_pour_tomato_cookies_microwave_dataset/subtask_data/pour_second_2_seed104_task22.hdf5",
+        "frame_idx": 0,
+        "tag": "t22_pour_first_to_pour_second_robotonly_f0"
+      }
+    ]
+  }
+}

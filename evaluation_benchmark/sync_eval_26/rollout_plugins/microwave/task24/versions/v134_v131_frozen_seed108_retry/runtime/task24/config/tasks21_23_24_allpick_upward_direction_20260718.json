@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "signal": "EEF motion direction only",
+    "purpose": "reject descending contact and hold every pick during post-contact upward lift",
+    "object_gate": false,
+    "stage_gate": false,
+    "gripper_gate": false
+  },
+  "tasks": {
+    "21": {
+      "subtasks": {
+        "pick butter": {
+          "direction_mean": [0.0, 0.0, 1.0],
+          "window": 3,
+          "sample_count": 100
+        },
+        "pick chocolate": {
+          "direction_mean": [0.0, 0.0, 1.0],
+          "window": 3,
+          "sample_count": 100
+        }
+      }
+    },
+    "23": {
+      "subtasks": {
+        "pick cream": {
+          "direction_mean": [0.0, 0.0, 1.0],
+          "window": 3,
+          "sample_count": 100
+        },
+        "pick popcorn": {
+          "direction_mean": [0.0, 0.0, 1.0],
+          "window": 3,
+          "sample_count": 100
+        }
+      }
+    },
+    "24": {
+      "subtasks": {
+        "pick cookies": {
+          "direction_mean": [0.0, 0.0, 1.0],
+          "window": 3,
+          "sample_count": 100
+        },
+        "pick popcorn": {
+          "direction_mean": [0.0, 0.0, 1.0],
+          "window": 3,
+          "sample_count": 100
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "tasks": {
+    "5": [
+      {
+        "released": "open top drawer",
+        "next": "close top drawer",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/5_butter_middle_drawer_dataset/subtask_data/close_top_drawer_1_seed104_task5.hdf5",
+        "frame_idx": 0,
+        "tag": "task5_open_top_to_close_top_f0"
+      },
+      {
+        "released": "close the top drawer",
+        "next": "open middle drawer",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/5_butter_middle_drawer_dataset/subtask_data/open_middle_drawer_2_seed104_task5.hdf5",
+        "frame_idx": 20,
+        "tag": "task5_close_top_to_open_middle_f20"
+      },
+      {
+        "released": "close middle drawer",
+        "next": "open bottom drawer",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/5_butter_middle_drawer_dataset/subtask_data/open_bottom_drawer_4_seed104_task5.hdf5",
+        "frame_idx": 20,
+        "tag": "task5_close_middle_to_open_bottom_f20"
+      },
+      {
+        "released": "close bottom drawer",
+        "next": "open middle drawer again",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/5_butter_middle_drawer_dataset/subtask_data/open_middle_drawer_again_5_seed104_task5.hdf5",
+        "frame_idx": 40,
+        "tag": "task5_close_bottom_to_open_middle_again_f40"
+      }
+    ]
+  }
+}

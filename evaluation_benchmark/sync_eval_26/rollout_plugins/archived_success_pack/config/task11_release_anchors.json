@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "11": [
+      {
+        "released": "close top drawer",
+        "next": "open middle drawer",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/11_cookies_top_butter_middle_dataset/subtask_data/open_middle_drawer_4_seed104_task11.hdf5",
+        "frame_idx": 0,
+        "tag": "task11_close_top_to_open_middle_f0"
+      }
+    ]
+  }
+}

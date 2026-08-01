@@ -1,0 +1,11 @@
+.env
+outputs/
+__pycache__/
+*.py[cod]
+*.mp4
+*.gif
+*.safetensors
+*.pt
+*.bin
+*.hdf5
+*.h5

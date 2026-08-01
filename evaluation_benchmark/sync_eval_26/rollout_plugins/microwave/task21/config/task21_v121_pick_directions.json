@@ -1,0 +1,26 @@
+{
+  "tasks": {
+    "21": {
+      "subtasks": {
+        "pick butter": {
+          "direction_mean": [
+            0,
+            0,
+            1
+          ],
+          "window": 3,
+          "sample_count": 100
+        },
+        "pick chocolate": {
+          "direction_mean": [
+            0,
+            0,
+            1
+          ],
+          "window": 3,
+          "sample_count": 100
+        }
+      }
+    }
+  }
+}

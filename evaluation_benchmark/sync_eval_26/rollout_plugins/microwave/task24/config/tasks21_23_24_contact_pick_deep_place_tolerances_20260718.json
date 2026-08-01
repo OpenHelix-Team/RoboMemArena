@@ -1,0 +1,14 @@
+{
+  "open microwave": 0.105,
+  "pick butter": 0.03,
+  "place butter": 0.06,
+  "pick chocolate": 0.045,
+  "place chocolate": 0.04,
+  "pick cream": 0.03,
+  "place cream": 0.06,
+  "pick cookies": 0.03,
+  "place cookies": 0.06,
+  "pick popcorn": 0.045,
+  "place popcorn": 0.06,
+  "close microwave": 0.06
+}

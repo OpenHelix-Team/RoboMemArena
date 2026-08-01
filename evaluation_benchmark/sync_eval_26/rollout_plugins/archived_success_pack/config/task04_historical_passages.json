@@ -1,0 +1,35 @@
+{
+  "tasks": {
+    "4": {
+      "subtasks": {
+        "close bottom drawer": {
+          "required_near_segments": 1
+        },
+        "close middle drawer": {
+          "required_near_segments": 1
+        },
+        "close the top drawer": {
+          "required_near_segments": 1
+        },
+        "close top drawer final": {
+          "required_near_segments": 2
+        },
+        "open bottom drawer": {
+          "required_near_segments": 1
+        },
+        "open middle drawer": {
+          "required_near_segments": 1
+        },
+        "open top drawer": {
+          "required_near_segments": 2
+        },
+        "open top drawer again": {
+          "required_near_segments": 1
+        },
+        "place butter into top drawer": {
+          "required_near_segments": 2
+        }
+      }
+    }
+  }
+}

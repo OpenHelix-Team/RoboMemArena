@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "purpose": "Task23 v153 single-variable ablation. Preserve v152's VLM, scorer, seed, hold/release timing, and the first two robot-only anchors, but remove the final pick-popcorn to place-popcorn robot-only reset.",
+    "object_anchor": false,
+    "oracle_prompt": false,
+    "anchor_trigger": "vlm_next_prompt_after_eef_hold_release",
+    "derived_from": "../../config/release_anchors_t21_t23_openpick_robotonly.json",
+    "removed_rules": [
+      "pick cream -> place cream robot-only f40 (inherited from v145)",
+      "pick popcorn -> place popcorn robot-only f165 (v153 change)"
+    ],
+    "unchanged_rules": [
+      "open microwave -> pick cream robot-only f0",
+      "place cream -> pick popcorn robot-only f0"
+    ]
+  },
+  "tasks": {
+    "23": [
+      {
+        "released": "open microwave",
+        "next": "pick cream",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/23_cream_popcorn_microwave_dataset/subtask_data/pick_cream_1_seed104_task23.hdf5",
+        "frame_idx": 0,
+        "tag": "t23_open_microwave_to_pick_cream_robotonly_f0"
+      },
+      {
+        "released": "place cream",
+        "next": "pick popcorn",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/23_cream_popcorn_microwave_dataset/subtask_data/pick_popcorn_3_seed104_task23.hdf5",
+        "frame_idx": 0,
+        "tag": "t23_place_cream_to_pick_popcorn_robotonly_f0"
+      }
+    ]
+  }
+}

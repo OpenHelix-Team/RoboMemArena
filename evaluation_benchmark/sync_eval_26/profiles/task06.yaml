@@ -1,0 +1,64 @@
+task_id: 6
+task_name: pour_tomato_sauce_bowl_drainer
+status: frozen-success
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/6_pour_tomato_sauce_into_bowl_drainer.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 100
+seed_mode: fixed
+replan_steps: 1
+max_steps: 2500
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 0
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/run_autonomous_task.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+  EVALUATOR_FILE_OVERRIDE: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+  POST_STAGE_STEPS: '30'
+  VLM_INTERVAL: '25'
+  HOLD_AFTER_REQUIRED_STAGES: '1'
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: counting
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/run_autonomous_task.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/run_task6_fixed_seed_repeat_worker.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/serve_policy_selfcontained.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/submit_autonomous_task.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/submit_task6_fixed_seed_repeat_worker.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/summarize_task6_fixed_seed_repeat_group.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/evaluators/autonomous_prompt_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/run_autonomous_task.sh
+  : ec1a06fb358e741e11a503921411596e6efa8dcf68ebe350d62413a8f3fe25b3
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/run_task6_fixed_seed_repeat_worker.sh
+  : d5c3574a515a8cca2d54d14645efbc652ce9abb773d5571672db27800bdacbb6
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/serve_policy_selfcontained.py
+  : b129af7b82750600b75bf66034a6e47d7e9b5de4cc5c19bd2eb20227fe09dbf9
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/submit_autonomous_task.sh
+  : df035ad27af45ecf5c1c7b5b95864c0eb6d4af387c9887c902b3c9c84dad501b
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/submit_task6_fixed_seed_repeat_worker.sh
+  : 6d89119adb7003bad59561ad3d04045bcf87521c9b80cab4fbeab2185a13e4fc
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/scripts/summarize_task6_fixed_seed_repeat_group.py
+  : ce4fa86f817b1c8d452eba7fc2da82bf9a806227f504cefb44b2fe523ad0ecba
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/evaluators/autonomous_prompt_guard.py
+  : 881d1fe529a2868c7319353c1b816065a730e8246121f40d21a30a2806f888f7
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
+  : 8d541a6b3d62562309af23e439e6607557406f148bfc12e6204e6310779198ff
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD

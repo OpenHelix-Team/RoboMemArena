@@ -1,0 +1,27 @@
+{
+  "tasks": {
+    "17": [
+      {
+        "released": "open middle drawer",
+        "next": "pick butter",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/17_butter_chocolate_middle_drawer_dataset/subtask_data/pick_butter_1_seed104_task17.hdf5",
+        "frame_idx": 250,
+        "tag": "task17_open_middle_to_pick_butter_f250"
+      },
+      {
+        "released": "pick butter",
+        "next": "place butter",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/17_butter_chocolate_middle_drawer_dataset/subtask_data/place_butter_2_seed104_task17.hdf5",
+        "frame_idx": 0,
+        "tag": "task17_pick_butter_to_place_butter_f0"
+      },
+      {
+        "released": "place butter",
+        "next": "pick chocolate",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/17_butter_chocolate_middle_drawer_dataset/subtask_data/pick_chocolate_3_seed104_task17.hdf5",
+        "frame_idx": 180,
+        "tag": "task17_place_butter_to_pick_chocolate_f180"
+      }
+    ]
+  }
+}

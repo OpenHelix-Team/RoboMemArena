@@ -1,0 +1,31 @@
+{
+  "tasks": {
+    "21": {
+      "subtasks": {
+        "open microwave": {"required_near_segments": 1},
+        "pick butter": {"required_near_segments": 1},
+        "place butter": {"required_near_segments": 1},
+        "pick chocolate": {"required_near_segments": 1},
+        "place chocolate": {"required_near_segments": 1}
+      }
+    },
+    "23": {
+      "subtasks": {
+        "open microwave": {"required_near_segments": 1},
+        "pick cream": {"required_near_segments": 1},
+        "place cream": {"required_near_segments": 1},
+        "pick popcorn": {"required_near_segments": 1},
+        "place popcorn": {"required_near_segments": 1}
+      }
+    },
+    "24": {
+      "subtasks": {
+        "open microwave": {"required_near_segments": 1},
+        "pick cookies": {"required_near_segments": 1},
+        "place cookies": {"required_near_segments": 1},
+        "pick popcorn": {"required_near_segments": 1},
+        "place popcorn": {"required_near_segments": 1}
+      }
+    }
+  }
+}

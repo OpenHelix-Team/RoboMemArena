@@ -1,0 +1,23 @@
+{
+  "tasks": {
+    "21": {
+      "subtasks": {
+        "open microwave": {
+          "required_near_segments": 1
+        },
+        "pick butter": {
+          "required_near_segments": 1
+        },
+        "place butter": {
+          "required_near_segments": 1
+        },
+        "pick chocolate": {
+          "required_near_segments": 1
+        },
+        "place chocolate": {
+          "required_near_segments": 1
+        }
+      }
+    }
+  }
+}

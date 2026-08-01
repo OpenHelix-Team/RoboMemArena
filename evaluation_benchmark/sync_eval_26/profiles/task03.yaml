@@ -1,0 +1,95 @@
+task_id: 3
+task_name: cream_pudding_basket
+status: frozen-success
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/3_cream_pudding_basket.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 104
+seed_mode: increment
+replan_steps: 5
+max_steps: 2000
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 1
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/run_profile_tasks2_26.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+  ENDPOSE_HOLD_TARGETS_JSON: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/tasks2_26_endpose_targets_seed100_199.json
+  ENDPOSE_TARGET_PASSAGE_COUNTS_JSON: __NONE__
+  ENDPOSE_HOLD_POS_TOL: '0.06'
+  ENDPOSE_HOLD_EEF_DEFAULT_TOL: '0.06'
+  ENDPOSE_HOLD_EEF_P95_EXTRA_TOL: '0.02'
+  ENDPOSE_HOLD_EEF_TOL_CAP: '0.08'
+  POST_HOLD_RELEASE_VLA_STEPS: '30'
+  STRICT_HOLD_RELEASE_NEXT: '0'
+  PREVENT_SUBTASK_REGRESSION: '1'
+  REGRESSION_GUARD_AFTER_HOLD_RELEASE: '1'
+  HOLD_RELEASE_BLOCK_PAST_SUBTASKS: '0'
+  DRAWER_FORWARD_ADVANCE_GUARD: '0'
+  DRAWER_OPEN_STAGE_THRESH: '0.10'
+  DRAWER_CLOSE_STAGE_THRESH: '0.08'
+  ENDPOSE_PICK_GRIPPER_GATE: '0'
+  ENDPOSE_PICK_OBJECT_LIFT_GATE: '0'
+  ENDPOSE_PICK_OBJECT_LIFT_DELTA: '0.01'
+  DISABLE_OUTPUT_NORMALIZE: '1'
+  VLM_TASK_TEXT_MODE: no_label_no_order
+  VLM_COMPLETED_SUBTASKS_MODE: 'off'
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: archived-success-pack
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/run_profile_tasks2_26.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/eval_task1_qwen3_sync_endpose_hold_officialscore.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/legacy_rollout_compat.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/official_stage_tracker.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/run_task1_officialscore.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/run_tasks2_26_sync_hold_eval.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/drawer_passage_counts_task4full_plus_alltasks_20260627.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task05_release_anchors.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task05_tolerances.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task11_release_anchors.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task17_release_anchors.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task1_subtask_end_poses_successindex_seed100_199.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/tasks2_26_endpose_targets_seed100_199.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/tasks2_26_target_passage_counts_seed100_199_alltasks_tol045_20260624_074452.json
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/run_profile_tasks2_26.sh: 2fa32212da858e7eae926067f49b00cde1c1905878807382060d013fa9a54618
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/eval_task1_qwen3_sync_endpose_hold_officialscore.py
+  : 72d475d847f3284418690434f2994bcbf29652f25260b98e544f21e6c84e16a3
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+  : 17cf582dfdc2605d3b2bd71e85aa35ddffdb8bfd4b0fb4afe316185f64bb9ce8
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/legacy_rollout_compat.py: e30b75e2436fd0e99dbaafcd1ff472679a3703ab196fade43a03a05c1f51b078
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/official_stage_tracker.py
+  : 77ba912a7861c85530aafcb1c2ca9ea7125ba4d570433d0ae50e659c052a6399
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/run_task1_officialscore.sh
+  : b622214e811ba0e6770d5530764360ddb6047431f0218373484432bc7e63c38f
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/evaluators/run_tasks2_26_sync_hold_eval.sh
+  : eb15b6b311907631c4f43314a8270607b9ff1e0c88c7ee574a1db6fb302f2fd6
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/drawer_passage_counts_task4full_plus_alltasks_20260627.json
+  : fec7b45617c87f14462c4e146d36c6f37090983b8e0db1989d484fa574094166
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task05_release_anchors.json: e62e9a774b48258fb09bae3055c1253231bc4a9e875a9c09cbb47c1d2491d601
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task05_tolerances.json: af205bb972d89c6803d7ca36c9b85865cd601a4593320b4e46881c7c071f72f5
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task11_release_anchors.json: b1aaa8beaa5909dd7ae4a51be513b732017b4962b1bb87b0ee5fe3458da28c8c
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task17_release_anchors.json: 758715403b2d77fa29422de1af3b0fc0c0489f1bd68ae9d5480b811ad864e681
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/task1_subtask_end_poses_successindex_seed100_199.json
+  : daafec2b2c2cb87032be7f7977c19b6d5df09382e390ee87cc8f1251a248c2b3
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/tasks2_26_endpose_targets_seed100_199.json
+  : 2b1a0efea81536ae5255554c29ecc2c04ccbccd172db891ee6f2e696eb8a00a8
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/tasks2_26_target_passage_counts_seed100_199_alltasks_tol045_20260624_074452.json
+  : 8e29871dbd3ab017f0b6b84d2a26bd6fc5a792b781225daaee8ea95273a10a2f
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD

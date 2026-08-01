@@ -1,0 +1,98 @@
+task_id: 24
+task_name: cookies_popcorn_microwave
+status: frozen-success
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/24_cookies_popcorn_microwave.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 108
+seed_mode: fixed
+replan_steps: 5
+max_steps: 2000
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 1
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/run_one.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+  ROBOMEMARENA_FULLVLM_DATA_ROOT: ${ASSET_FULLVLM_DATA_ROOT}
+  H5DUMP_BIN: ${ASSET_H5DUMP_BIN}
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: microwave
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/run_one.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/release_anchors_t21_t23_t24_no_pick2place_robotonly_20260718.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/task23_24_eef_runtime_pickplace_hold30_20260718.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/task24_pickpopcorn_tol007_20260718.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/tasks21_23_24_allpick_upward_direction_20260718.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/tasks21_23_24_pick_contact_deep_place_eef_targets_20260718.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/tasks21_23_24_pick_firstpassage_20260718.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/eef_direction_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/eef_release_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/forward_hold_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/microwave_debug.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/run_tasks2_26_sync_hold_eval.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/runtime_hint.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/launch_one_sync_hold_orig35999.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_microwave_eefonly_no_object_gate.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task23_24_v112_historicalvlm_eef_pickfinish50_latest622_1ep.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task24_v123_strict_adjacent_latest622_1ep.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task24_v130_pickpopcorn_tol007_keepdirection_latest622_1ep.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/serve_policy_custom_repo.py
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/run_one.sh
+  : a9153aaf0af16c92731d1ecff8d951475872f23dad31eea6be67614ca6f00e87
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/release_anchors_t21_t23_t24_no_pick2place_robotonly_20260718.json
+  : 85417849840369581d1e3c8182fa603492b3f3268a194b04861fcb122e75591a
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/task23_24_eef_runtime_pickplace_hold30_20260718.json
+  : 8c83aa11fd4de9665441b3789679aa7da1383b1c96267f6ad255ebb56673fc82
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/task24_pickpopcorn_tol007_20260718.json
+  : 59695fee66797481b597795e1ed2a4b952f3f6db8afc984ce0c77c16cd1653eb
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/tasks21_23_24_allpick_upward_direction_20260718.json
+  : 444da08b97b2a97df6d688ba8fa22a6ca3efb796b5fabbc2c3b5fa0e011680aa
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/tasks21_23_24_pick_contact_deep_place_eef_targets_20260718.json
+  : 6929a9e9a8828cc77d8597f8d1a7295d961fb75d806429106cd7167a77a84c2c
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/config/tasks21_23_24_pick_firstpassage_20260718.json
+  : 3101065f9651d117045952208cf905993d08dbfdfc02f4efa8b48eba3f2b05d0
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/eef_direction_guard.py
+  : 55491886a5c08ad83e32db113669ad891095463288450abaa66fd5e08d6f4cef
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/eef_release_guard.py
+  : 77868ceeecef786349601f27f700c59d066da818dc69866a920faa667eff753e
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+  : 5538b732887e27895c9c4c3838f2f8a8e4767c35883fb8de782c5e5ce23ffcba
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/forward_hold_guard.py
+  : d9a032b0d5e6fbc7b13343d8bd44a5429d73f2cee18b15fc23428af1447c0a4e
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/microwave_debug.py
+  : 14a9865b2dd9b131e6de666f68ac7d7c5dd8257d30d4e249e290dd60a3762069
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/run_tasks2_26_sync_hold_eval.sh
+  : 4db22f3b71f3203bee234572dba0e2be909d6e3522856a6e44e00a4831bb97cd
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/runtime_hint.py
+  : f69a9925b8dc0fe4fc17632b5a1b716320d12a2b8c960aa91ac4d6e3fbb82a99
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/launch_one_sync_hold_orig35999.sh
+  : 7a7598661ab6ec912d0b798bfdd2a286da794b0b6f3a44e800149628e873ed2b
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_microwave_eefonly_no_object_gate.sh
+  : 06003a9d1f840eabef99462657a32c5e6a335263533145a9f03b365d92488624
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task23_24_v112_historicalvlm_eef_pickfinish50_latest622_1ep.sh
+  : 5a5b5b5e022f086b58bb9454dfe0d5ee405e180933aec0d43183bad15457ff20
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task24_v123_strict_adjacent_latest622_1ep.sh
+  : c985b3529322e9623596067e532e3b2645955f90a0add2e13262e8b51d95fbfa
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task24_v130_pickpopcorn_tol007_keepdirection_latest622_1ep.sh
+  : f7199d5e29dfa24d016d5ab6cfd47acfb22c1cd5f67baabfa33fcc070d11c93e
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/serve_policy_custom_repo.py
+  : dd72bd023a1efb974abf0c573d812a003fbfd3f3e0224a8561b390a1b71b3cc4
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD

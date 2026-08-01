@@ -1,0 +1,27 @@
+{
+  "tasks": {
+    "4": [
+      {
+        "released": "close the top drawer",
+        "next": "open middle drawer",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/4_drawer_butter_dataset/subtask_data/open_middle_drawer_2_seed104_task4.hdf5",
+        "frame_idx": 20,
+        "tag": "task4_close_top_to_open_middle_f20"
+      },
+      {
+        "released": "close middle drawer",
+        "next": "open bottom drawer",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/4_drawer_butter_dataset/subtask_data/open_bottom_drawer_4_seed104_task4.hdf5",
+        "frame_idx": 20,
+        "tag": "task4_close_middle_to_open_bottom_f20"
+      },
+      {
+        "released": "close bottom drawer",
+        "next": "open top drawer again",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/4_drawer_butter_dataset/subtask_data/open_top_drawer_again_6_seed104_task4.hdf5",
+        "frame_idx": 50,
+        "tag": "task4_close_bottom_to_open_top_again_f50"
+      }
+    ]
+  }
+}

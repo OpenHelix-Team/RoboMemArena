@@ -1,0 +1,22 @@
+{
+  "tasks": {
+    "21": [
+      {
+        "released": "place butter",
+        "next": "pick chocolate",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/21_butter_chocolate_microwave_dataset/subtask_data/pick_chocolate_3_seed104_task21.hdf5",
+        "frame_idx": 0,
+        "tag": "t21_stage_place_butter_to_pick_chocolate_seed104_f0"
+      }
+    ],
+    "24": [
+      {
+        "released": "place cookies",
+        "next": "pick popcorn",
+        "anchor_hdf5": "${ASSET_FULLVLM_DATA_ROOT}/24_cookies_popcorn_microwave_dataset/subtask_data/pick_popcorn_3_seed104_task24.hdf5",
+        "frame_idx": 0,
+        "tag": "t24_stage_place_cookies_to_pick_popcorn_seed104_f0"
+      }
+    ]
+  }
+}

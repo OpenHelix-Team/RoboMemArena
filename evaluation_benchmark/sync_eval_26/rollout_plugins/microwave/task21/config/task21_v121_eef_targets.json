@@ -1,0 +1,82 @@
+{
+  "tasks": {
+    "21": {
+      "subtasks": {
+        "close microwave": {
+          "hold_gripper": -1,
+          "target_ee_pos": [
+            0.04888017489426332,
+            0.16152995150494615,
+            0.7664436654703422
+          ]
+        },
+        "open microwave": {
+          "hold_gripper": 1,
+          "target_ee_pos": [
+            -0.2969425510711935,
+            0.22245016349195684,
+            0.5873899524961211
+          ]
+        },
+        "pick butter": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16448986639901952,
+            -0.09461996683505572,
+            0.43705415813754245
+          ]
+        },
+        "pick chocolate": {
+          "close_index_max": 70,
+          "close_index_median": 70,
+          "close_index_min": 70,
+          "contact_index_max": 80,
+          "contact_index_median": 80,
+          "contact_index_min": 80,
+          "hold_gripper": 1,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.16725719115042204,
+            -0.19202005691769247,
+            0.4408878995885924
+          ]
+        },
+        "place butter": {
+          "hold_gripper": -1,
+          "release_index_max": 170,
+          "release_index_median": 170,
+          "release_index_min": 170,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.01629123053502636,
+            0.4708112540072388,
+            0.581631049678823
+          ]
+        },
+        "place chocolate": {
+          "hold_gripper": -1,
+          "release_index_max": 180,
+          "release_index_median": 180,
+          "release_index_min": 180,
+          "source_hdf_count": 100,
+          "target_ee_pos": [
+            0.02710520647040062,
+            0.4699856939182325,
+            0.5743239749541225
+          ]
+        }
+      }
+    }
+  },
+  "metadata": {
+    "frozen_version": "Task21 v121",
+    "hold_signal": "EEF-only"
+  }
+}

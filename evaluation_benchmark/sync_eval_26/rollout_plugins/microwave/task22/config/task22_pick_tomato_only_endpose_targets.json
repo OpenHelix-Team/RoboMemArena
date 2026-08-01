@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "purpose": "Task22 v17: apply an EEF hold only to the initial pick-tomato boundary.",
+    "source": "tasks2_26_endpose_targets_seed100_199.json task22/pick tomato",
+    "object_anchor": false,
+    "oracle_prompt": false
+  },
+  "tasks": {
+    "22": {
+      "subtasks": {
+        "pick tomato": {
+          "target_ee_pos": [
+            -0.03329862389341168,
+            -0.19556333254605934,
+            0.8077741548726556
+          ],
+          "hold_gripper": 1,
+          "pos_dist_p95": 0.005884706790958178
+        }
+      }
+    }
+  }
+}

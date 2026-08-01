@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "purpose": "preserve the naturally grasped object pose across autonomous VLM pick-to-place switches",
+    "object_anchor": false,
+    "oracle_prompt": false,
+    "pick_to_place_anchor": false
+  },
+  "tasks": {
+    "21": [
+      {
+        "released": "open microwave",
+        "next": "pick butter",
+      "anchor_hdf5": "${ROBOMEMARENA_FULLVLM_DATA_ROOT}/21_butter_chocolate_microwave_dataset/subtask_data/pick_butter_1_seed104_task21.hdf5",
+        "frame_idx": 0,
+        "tag": "t21_open_microwave_to_pick_butter_robotonly_f0"
+      },
+      {
+        "released": "place butter",
+        "next": "pick chocolate",
+      "anchor_hdf5": "${ROBOMEMARENA_FULLVLM_DATA_ROOT}/21_butter_chocolate_microwave_dataset/subtask_data/pick_chocolate_3_seed104_task21.hdf5",
+        "frame_idx": 0,
+        "tag": "t21_place_butter_to_pick_chocolate_robotonly_f0"
+      }
+    ],
+    "23": [
+      {
+        "released": "open microwave",
+        "next": "pick cream",
+      "anchor_hdf5": "${ROBOMEMARENA_FULLVLM_DATA_ROOT}/23_cream_popcorn_microwave_dataset/subtask_data/pick_cream_1_seed104_task23.hdf5",
+        "frame_idx": 0,
+        "tag": "t23_open_microwave_to_pick_cream_robotonly_f0"
+      },
+      {
+        "released": "place cream",
+        "next": "pick popcorn",
+      "anchor_hdf5": "${ROBOMEMARENA_FULLVLM_DATA_ROOT}/23_cream_popcorn_microwave_dataset/subtask_data/pick_popcorn_3_seed104_task23.hdf5",
+        "frame_idx": 0,
+        "tag": "t23_place_cream_to_pick_popcorn_robotonly_f0"
+      }
+    ],
+    "24": [
+      {
+        "released": "open microwave",
+        "next": "pick cookies",
+      "anchor_hdf5": "${ROBOMEMARENA_FULLVLM_DATA_ROOT}/24_cookies_popcorn_microwave_dataset/subtask_data/pick_cookies_1_seed104_task24.hdf5",
+        "frame_idx": 0,
+        "tag": "t24_open_microwave_to_pick_cookies_robotonly_f0"
+      },
+      {
+        "released": "place cookies",
+        "next": "pick popcorn",
+      "anchor_hdf5": "${ROBOMEMARENA_FULLVLM_DATA_ROOT}/24_cookies_popcorn_microwave_dataset/subtask_data/pick_popcorn_3_seed104_task24.hdf5",
+        "frame_idx": 40,
+        "tag": "t24_place_cookies_to_pick_popcorn_robotonly_f40"
+      }
+    ]
+  }
+}

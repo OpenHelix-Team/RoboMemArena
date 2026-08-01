@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/OpenHelix-Team/RoboMemArena.git",
+  "commit": "d9f83ac5182e25ad7f0a301a77a0b667f2392df1",
+  "files": {
+    "evaluation_benchmark/scripts/task2_26_reference_stage.py": "0ab5e19cb7b90844b86fe04a76facc0364af55f1e841c4754aa675404a318538",
+    "evaluation_benchmark/scripts/eval_common.py": "6691226898f115b74a60c72c07ec2e422fabb6c869c67583ede52fb0b6d0fa09",
+    "evaluation_benchmark/openpi_minimal_runtime/eval_common.py": "7e11bae25f40e6112b1db02ffbe2fa0f7f8f27658be98176b0c8a21b38f6eb3d",
+    "evaluation_benchmark/reference_evaluation/tasks2_26_vlm5_reference/eval_tasks2_26_vlm_vla.py": "35615945829072a217ebc5417b805639f8e6a1af7bdef1f9b58bb12392d15681",
+    "evaluation_benchmark/async_vlm26_reference/eval_fullvlm26_async_vlm_vla.py": "b19cb0afa7fe1c9044495d7aeb57dccc754cdca60fe075eadfe8d667f1974fb9"
+  }
+}

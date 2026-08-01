@@ -1,0 +1,79 @@
+task_id: 20
+task_name: cookies_chocolate_microwave
+status: frozen-success
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/20_cookies_chocolate_microwave.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 106
+seed_mode: fixed
+replan_steps: 10
+max_steps: 1000
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 1
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/run_task20_v110.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+  TASK20_DATA_ROOT: ${ASSET_FULLVLM_DATA_ROOT}/20_cookies_chocolate_microwave_dataset/subtask_data
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: microwave
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/run_task20_v110.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/microwave_debug.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/run_tasks2_26_sync_hold_eval.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/runtime_hint.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/bootstrap_robomemarena.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/materialize_task20_paths.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/run_task20_v49c6.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/serve_policy_custom_repo.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v110.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v49c6.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/release_anchors_t20_open2pick_f70_place2pick_f0_robotonly.template.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_eef_open105_pickcookies03_placecookies06_pickchoc045_placechoc04_tol_20260714.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_eef_open105_pickcookies03_placecookies11_pickchoc045_placechoc04_tol_20260722.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_eef_runtime_pickplace_hold30.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_passages_pickcookies1_pickchoc2_20260714.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_targets_pick_contact_f80_20260711.json
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/run_task20_v110.sh: 250943dd9ff9642bcab59bd876c9f080fbf82d389cfcdc32a5993b8f863ef557
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+  : b540c4f14423c1cbd9023427ec7b34348d901ebd217677b2099fc25da6c245b6
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/microwave_debug.py: 14a9865b2dd9b131e6de666f68ac7d7c5dd8257d30d4e249e290dd60a3762069
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/run_tasks2_26_sync_hold_eval.sh
+  : de6cfcb5e04dc4c636344a7ce92123b50f881dcbf305e46d4100fe0ce583d84c
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/evaluators/runtime_hint.py: f69a9925b8dc0fe4fc17632b5a1b716320d12a2b8c960aa91ac4d6e3fbb82a99
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/bootstrap_robomemarena.sh: 73ff21930a38a8326ddbdc51a54fc6be8ebafc97df4b8eccc524fc8a786cd0ce
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/materialize_task20_paths.py: 9af98c615beea42b44c00ec7d9eb5ae4cf9cf5f7727fc20f2b9de64b5a2fba73
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/run_task20_v49c6.sh: 9c5148cecf613df5e0704191759d6b7a19bd6a40dfe44a2ec87493b4e85e28f7
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/serve_policy_custom_repo.py: dd72bd023a1efb974abf0c573d812a003fbfd3f3e0224a8561b390a1b71b3cc4
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v110.sh: 061e638665b691ead9eb73001b951737094527f964aeea2718088dce224527bc
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v49c6.sh: 50477382a55125646ae5e190208629d2494f0a77fd554f6b0bada107684fcf89
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/release_anchors_t20_open2pick_f70_place2pick_f0_robotonly.template.json
+  : bdb2d15fed31e4d6b030cd23c8935f0ab09da29bbd5a5bdae90cf85c39261cf8
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_eef_open105_pickcookies03_placecookies06_pickchoc045_placechoc04_tol_20260714.json
+  : 7737a507618855a9c412c33a9b53cd219f431362ba1384b9600c991881cfdda4
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_eef_open105_pickcookies03_placecookies11_pickchoc045_placechoc04_tol_20260722.json
+  : 50345912d9171147373a18831412be7940cfe01b2fcee65096c5c6ae979b2e2b
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_eef_runtime_pickplace_hold30.json
+  : 5383b9ea2201e22f617b82c56b8894d310a2bbf001337b3a7c998ac31f5ce4b8
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_passages_pickcookies1_pickchoc2_20260714.json
+  : 319e5c21a91c1403b76f60417ecf4b00d0c8f94f21ffcf900561e9e23ec5922f
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_targets_pick_contact_f80_20260711.json
+  : 973edb09137f80123100ae1d70418fadefabee0f08a8d352e411c97a795e7101
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD

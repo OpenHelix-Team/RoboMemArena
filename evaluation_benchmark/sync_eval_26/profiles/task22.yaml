@@ -1,0 +1,85 @@
+task_id: 22
+task_name: pour_tomato_cookies_microwave
+status: experimental
+plugin_kind: frozen-subprocess
+plugin_entrypoint: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+bddl_path: ${ASSET_OFFICIAL_RUNTIME_ROOT}/bddl/22_pour_tomato_cookies_microwave.bddl
+vla_checkpoint: ${ASSET_VLA_CHECKPOINT}
+vlm_checkpoint: ${ASSET_VLM_CHECKPOINT}
+norm_path: ${ASSET_NORM_PATH}
+norm_sha256: ${ASSET_NORM_SHA256}
+seed: 104
+seed_mode: fixed
+replan_steps: 5
+max_steps: 2000
+runtime_topology:
+  allocation_gpus: 2
+  vla_visible_index: 0
+  vlm_visible_index: 1
+runtime_env:
+  SOURCE_COMMAND_JSON: '["bash", "${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_task22_v1_latest622.sh"]'
+  SOURCE_CWD: ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts
+  OFFICIAL_RUNTIME_ROOT: ${ASSET_OFFICIAL_RUNTIME_ROOT}
+  VLA_CONFIG: pi05_libero_robomemarena_fullvlm_v2_noflip_dataset
+prompt_config:
+  source: vlm
+  oracle_prompt_injection: false
+  rollout_family: microwave
+  official_scoring_commit: d9f83ac5182e25ad7f0a301a77a0b667f2392df1
+source_paths:
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_task22_v1_latest622.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/eef_direction_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/eef_release_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/forward_hold_guard.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/microwave_debug.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/run_tasks2_26_sync_hold_eval.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/runtime_hint.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/vla_training_prompt.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/launch_one_sync_hold_orig35999.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/materialize_tokenizer_compat_overlay.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_microwave_eefonly_no_object_gate.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_task22_v2_vlm_eef_pour_latest622.sh
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/serve_policy_custom_repo.py
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/release_anchors_empty.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/release_anchors_t22_v2_robotonly.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/task22_pick_tomato_only_endpose_targets.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/tasks2_26_endpose_targets_seed100_199.json
+- ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/tasks2_26_target_passage_counts_seed100_199_alltasks_tol045_20260624_074452.json
+source_hashes:
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/legacy_adapter.py: c55e2c52856a7de16968a0db03863a662f1298f5762e89afc009415e36752683
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_task22_v1_latest622.sh: a6c40565d64fc3f91b420213708ac8de7e5593596223f25de28ac35a6664befa
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/eef_direction_guard.py: 55491886a5c08ad83e32db113669ad891095463288450abaa66fd5e08d6f4cef
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/eef_release_guard.py: 77868ceeecef786349601f27f700c59d066da818dc69866a920faa667eff753e
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/eval_tasks2_26_sync_endpose_hold_officialscore.py
+  : cae4dd0c576a2de5997c6b5ceb4a75c67ac3ee1912590a21abc6346ea6766cba
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/forward_hold_guard.py: dda1862e4af6e2631c8a7d0be1de95366991acffe3701531b5a647b7447b1a6c
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/microwave_debug.py: 14a9865b2dd9b131e6de666f68ac7d7c5dd8257d30d4e249e290dd60a3762069
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/run_tasks2_26_sync_hold_eval.sh
+  : 7ce9535ed23bac925ce24b113870406ef1cd5a5b8a194f2041ee7fcb7ef60132
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/runtime_hint.py: f69a9925b8dc0fe4fc17632b5a1b716320d12a2b8c960aa91ac4d6e3fbb82a99
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/vla_training_prompt.py: d2280475e614879d3c50ce0d9d50a58c293047a59a5d7a0d61bf7888781ac0b8
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/launch_one_sync_hold_orig35999.sh
+  : 55ba7a991fb8621180bf6f0ba9f57a96063e86c9e8fb3773d0bca447aadba7de
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/materialize_tokenizer_compat_overlay.py
+  : f464c95b47d6b26950ddd90819847f1fba5ae8b840ee3459c35c83c962fcc4ab
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_microwave_eefonly_no_object_gate.sh
+  : d3d96d026c98c850aee42f679a7a66df786cdbd9a138e05033bd8ebf9cf79e72
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_task22_v2_vlm_eef_pour_latest622.sh
+  : b1b4be320069f604e7325bd45931e618812250b0fc18146db17cbabd9188d662
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/serve_policy_custom_repo.py: dd72bd023a1efb974abf0c573d812a003fbfd3f3e0224a8561b390a1b71b3cc4
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/release_anchors_empty.json: f0344bdc45a4b3d0f452b7ad5c56cbddf89690ac189261f2ba1e81c0f5f6ba0d
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/release_anchors_t22_v2_robotonly.json
+  : 6ee1032b607e22efb14d2bdb04def2fd023ec6f2c56fa982fe50b40132db27c1
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/task22_pick_tomato_only_endpose_targets.json
+  : 188f02b6519d19e9280a19f5af2b59a927aa2689c296858b459ce12d56b1aae3
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/tasks2_26_endpose_targets_seed100_199.json
+  : 0fb06e9f2c592c774d98c1a3ef79a6b216b26f321d07278b4337db02af038ff6
+  ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/config/tasks2_26_target_passage_counts_seed100_199_alltasks_tol045_20260624_074452.json
+  : a69a2151e28f6618aac80de8eb00c1023adcdc27ef2b006832756b5213de13be
+hf_assets:
+  vla_repo: TBD
+  vla_revision: TBD
+  vlm_repo: TBD
+  vlm_revision: TBD
