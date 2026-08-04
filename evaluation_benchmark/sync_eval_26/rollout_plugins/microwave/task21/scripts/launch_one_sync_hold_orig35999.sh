@@ -204,7 +204,9 @@ if [[ -n "${REPRO_ENTRY_LAUNCHER:-}" && -f "${REPRO_ENTRY_LAUNCHER}" ]]; then
 fi
 cp "${PACK_DIR}/scripts/run_microwave_eefonly_no_object_gate.sh" "${OUT_ROOT}/code_snapshot/"
 cp "${PACK_DIR}/scripts/serve_policy_custom_repo.py" "${OUT_ROOT}/code_snapshot/"
-cp "${PACK_DIR}/README.md" "${OUT_ROOT}/code_snapshot/"
+if [[ -f "${PACK_DIR}/README.md" ]]; then
+  cp "${PACK_DIR}/README.md" "${OUT_ROOT}/code_snapshot/"
+fi
 cp "${PACK_DIR}/evaluators/"*.py "${OUT_ROOT}/code_snapshot/"
 cp "${PACK_DIR}/evaluators/"*.sh "${OUT_ROOT}/code_snapshot/"
 cp "${PACK_DIR}/config/"*.json "${OUT_ROOT}/code_snapshot/"

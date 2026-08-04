@@ -9,6 +9,31 @@ from .models import TaskProfile
 DATA_ROOT_TOKEN = "${ASSET_FULLVLM_DATA_ROOT}"
 
 
+def _frozen_package_root(source: Path, repo_root: Path) -> Path | None:
+    """Return the self-contained rollout package owning a source file."""
+
+    for parent in (source.parent, *source.parents):
+        if parent == repo_root:
+            break
+        if not (parent / "scripts").is_dir():
+            continue
+        if any((parent / name).is_dir() for name in ("config", "evaluators", "assets")):
+            return parent
+    return None
+
+
+def _materialization_sources(*, profile: TaskProfile, repo_root: Path) -> list[Path]:
+    """Expand frozen rollout packages so relative runtime imports remain valid."""
+
+    sources = {source.resolve() for source in profile.source_paths}
+    for source in tuple(sources):
+        package_root = _frozen_package_root(source, repo_root)
+        if package_root is None:
+            continue
+        sources.update(path for path in package_root.rglob("*") if path.is_file())
+    return sorted(sources)
+
+
 def _render_source_text(*, text: str, repo_root: Path, assets: ExternalAssets, task_id: int) -> str:
     rendered = text
     for token, replacement in token_values(
@@ -30,8 +55,7 @@ def _materialize_source_overlay(
     repo_root: Path,
 ) -> Path:
     overlay_root = output_dir / "runtime_source"
-    for source in profile.source_paths:
-        source = source.resolve()
+    for source in _materialization_sources(profile=profile, repo_root=repo_root):
         try:
             relative = source.relative_to(repo_root)
         except ValueError as exc:
@@ -51,6 +75,10 @@ def _materialize_source_overlay(
             ),
             encoding="utf-8",
         )
+        # Some frozen launchers invoke nested shell scripts directly rather
+        # than through `bash`; retain the source permission bits in the
+        # per-episode overlay.
+        destination.chmod(source.stat().st_mode & 0o777)
     return overlay_root
 
 
@@ -72,6 +100,13 @@ def materialize_runtime_env(
     )
     env = dict(profile.runtime_env)
     for key, value in list(env.items()):
+        # The official runtime is deliberately an external, clean d9 checkout.
+        # It can live beneath the sync clone, so do not rewrite it into the
+        # per-episode source overlay along with mutable rollout source files.
+        if value == str(assets.official_runtime_root) or value.startswith(
+            f"{assets.official_runtime_root}/"
+        ):
+            continue
         env[key] = value.replace(str(repo_root), str(overlay_root))
     env.update(
         {

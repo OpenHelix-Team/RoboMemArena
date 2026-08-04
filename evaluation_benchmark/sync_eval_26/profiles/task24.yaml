@@ -80,7 +80,7 @@ source_hashes:
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/evaluators/runtime_hint.py
   : f69a9925b8dc0fe4fc17632b5a1b716320d12a2b8c960aa91ac4d6e3fbb82a99
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/launch_one_sync_hold_orig35999.sh
-  : 7a7598661ab6ec912d0b798bfdd2a286da794b0b6f3a44e800149628e873ed2b
+  : 971fa3ee4258db26cb96c543d6f036ceae89edf36306b99116c2271519a2ff0b
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_microwave_eefonly_no_object_gate.sh
   : 06003a9d1f840eabef99462657a32c5e6a335263533145a9f03b365d92488624
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task24/versions/v134_v131_frozen_seed108_retry/runtime/task24/scripts/run_task23_24_v112_historicalvlm_eef_pickfinish50_latest622_1ep.sh

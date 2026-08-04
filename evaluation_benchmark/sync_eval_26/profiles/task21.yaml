@@ -66,7 +66,7 @@ source_hashes:
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task21/evaluators/vla_training_prompt.py: d2280475e614879d3c50ce0d9d50a58c293047a59a5d7a0d61bf7888781ac0b8
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task21/scripts/bootstrap_robomemarena.sh: 06b83c6b3d0026ab929a733eb4e92cdd4674ca50f9c8a5dd6ad6908971033323
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task21/scripts/launch_one_sync_hold_orig35999.sh
-  : 1837da7b46526feecfc23ac4ebe936d6ef1ba6c31af07194137e7889d3e56759
+  : 6d5669823b9385a2d4fa622f35877ba159d9cf67e75cb07e449e22659d7b6055
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task21/scripts/materialize_task21_paths.py: 0c595c2147f6537e9b1e69898eb91bf3f4e22f9442b5a1ec0f5e4496daee53a3
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task21/scripts/run_microwave_eefonly_no_object_gate.sh
   : c2802811982955263d8cc64a36cd27a52217a873e98e3b9ea04bd0d237fe3a8f

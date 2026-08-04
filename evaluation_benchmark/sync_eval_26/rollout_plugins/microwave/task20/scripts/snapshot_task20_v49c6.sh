@@ -9,7 +9,7 @@ SNAPSHOT_DIR="${OUT_ROOT}/code_snapshot"
 mkdir -p "${SNAPSHOT_DIR}/package" "${SNAPSHOT_DIR}/official"
 
 for name in README.md FROZEN_PROVENANCE.md paths.example.env; do
-  cp -p "${PACK_DIR}/${name}" "${SNAPSHOT_DIR}/package/"
+  [[ -f "${PACK_DIR}/${name}" ]] && cp -p "${PACK_DIR}/${name}" "${SNAPSHOT_DIR}/package/"
 done
 for name in assets config evaluators scripts; do
   cp -a "${PACK_DIR}/${name}" "${SNAPSHOT_DIR}/package/"

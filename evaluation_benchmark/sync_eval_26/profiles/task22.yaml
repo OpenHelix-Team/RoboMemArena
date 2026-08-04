@@ -61,7 +61,7 @@ source_hashes:
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/runtime_hint.py: f69a9925b8dc0fe4fc17632b5a1b716320d12a2b8c960aa91ac4d6e3fbb82a99
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/evaluators/vla_training_prompt.py: d2280475e614879d3c50ce0d9d50a58c293047a59a5d7a0d61bf7888781ac0b8
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/launch_one_sync_hold_orig35999.sh
-  : 55ba7a991fb8621180bf6f0ba9f57a96063e86c9e8fb3773d0bca447aadba7de
+  : 5a90507704a976d4d8d293fa0e2317fcc21b9332f173f9a4852451e634fd3be1
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/materialize_tokenizer_compat_overlay.py
   : f464c95b47d6b26950ddd90819847f1fba5ae8b840ee3459c35c83c962fcc4ab
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task22/scripts/run_microwave_eefonly_no_object_gate.sh
