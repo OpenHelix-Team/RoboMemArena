@@ -73,7 +73,7 @@ source_hashes:
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/task20_targets_pick_contact_f80_20260711.json
   : 973edb09137f80123100ae1d70418fadefabee0f08a8d352e411c97a795e7101
 hf_assets:
-  vla_repo: TBD
-  vla_revision: TBD
-  vlm_repo: TBD
-  vlm_revision: TBD
+  vla_repo: huashuolei/PrediMem-SyncEval26
+  vla_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920
+  vlm_repo: huashuolei/PrediMem-SyncEval26
+  vlm_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920

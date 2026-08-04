@@ -93,7 +93,7 @@ source_hashes:
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/archived_success_pack/config/tasks2_26_target_passage_counts_seed100_199_alltasks_tol045_20260624_074452.json
   : 8e29871dbd3ab017f0b6b84d2a26bd6fc5a792b781225daaee8ea95273a10a2f
 hf_assets:
-  vla_repo: TBD
-  vla_revision: TBD
-  vlm_repo: TBD
-  vlm_revision: TBD
+  vla_repo: huashuolei/PrediMem-SyncEval26
+  vla_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920
+  vlm_repo: huashuolei/PrediMem-SyncEval26
+  vlm_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920

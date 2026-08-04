@@ -58,7 +58,7 @@ source_hashes:
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/counting/task6_fixed_seed_latest_d9f83ac/evaluators/eval_counting_autonomous_guarded_d9f83ac.py
   : 8d541a6b3d62562309af23e439e6607557406f148bfc12e6204e6310779198ff
 hf_assets:
-  vla_repo: TBD
-  vla_revision: TBD
-  vlm_repo: TBD
-  vlm_revision: TBD
+  vla_repo: huashuolei/PrediMem-SyncEval26
+  vla_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920
+  vlm_repo: huashuolei/PrediMem-SyncEval26
+  vlm_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920

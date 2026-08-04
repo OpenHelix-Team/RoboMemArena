@@ -84,7 +84,7 @@ source_hashes:
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task23/config/tasks2_26_target_passage_counts_seed100_199_alltasks_tol045_20260624_074452.json
   : a69a2151e28f6618aac80de8eb00c1023adcdc27ef2b006832756b5213de13be
 hf_assets:
-  vla_repo: TBD
-  vla_revision: TBD
-  vlm_repo: TBD
-  vlm_revision: TBD
+  vla_repo: huashuolei/PrediMem-SyncEval26
+  vla_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920
+  vlm_repo: huashuolei/PrediMem-SyncEval26
+  vlm_revision: a6c7977cde369ba252d38dfbf78f4ea1d607c920
