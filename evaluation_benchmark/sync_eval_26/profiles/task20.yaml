@@ -58,7 +58,7 @@ source_hashes:
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/materialize_task20_paths.py: 9af98c615beea42b44c00ec7d9eb5ae4cf9cf5f7727fc20f2b9de64b5a2fba73
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/run_task20_v49c6.sh: 9c5148cecf613df5e0704191759d6b7a19bd6a40dfe44a2ec87493b4e85e28f7
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/serve_policy_custom_repo.py: dd72bd023a1efb974abf0c573d812a003fbfd3f3e0224a8561b390a1b71b3cc4
-  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v110.sh: bfee883db8dfb7fd367226343e84e66f384f99671ce087d038851caead32c6c2
+  ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v110.sh: 91c875896a2af8542e7e115a142fce9e2948c6cf4388f8df39a6fd6312b5de39
   ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/scripts/snapshot_task20_v49c6.sh: 3d25e8832c61a39cf54d90df91d92826aa1bc49a6f3042e02d3f9c1821d2ac62
   ? ${SYNC26_ROOT}/evaluation_benchmark/sync_eval_26/rollout_plugins/microwave/task20/config/release_anchors_t20_open2pick_f70_place2pick_f0_robotonly.template.json
   : bdb2d15fed31e4d6b030cd23c8935f0ab09da29bbd5a5bdae90cf85c39261cf8
