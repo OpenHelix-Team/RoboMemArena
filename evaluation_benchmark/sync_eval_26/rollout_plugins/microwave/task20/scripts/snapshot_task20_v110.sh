@@ -13,7 +13,7 @@ for name in README.md FROZEN_PROVENANCE.md paths.example.env; do
   [[ -f "${PACK_DIR}/${name}" ]] && cp -p "${PACK_DIR}/${name}" "${SNAPSHOT_DIR}/package/"
 done
 for name in assets config evaluators scripts versions; do
-  cp -a "${PACK_DIR}/${name}" "${SNAPSHOT_DIR}/package/"
+  [[ -d "${PACK_DIR}/${name}" ]] && cp -a "${PACK_DIR}/${name}" "${SNAPSHOT_DIR}/package/"
 done
 
 OFFICIAL_SCRIPTS="${ROBOMEMARENA_REMOTE_ROOT}/evaluation_benchmark/scripts"
