@@ -18,7 +18,7 @@ class TaskPromptContractTest(unittest.TestCase):
             self.assertIn("in this order: top, middle, bottom", prompts[f"task{task}"])
             self.assertIn("Open and close each drawer", prompts[f"task{task}"])
         self.assertEqual(prompts["task11"],
-                         "Put cookies into the top drawer and put chocolate into another drawer.")
+                         "Put cookies into the top drawer, then put butter into the middle drawer.")
         self.assertEqual(prompts["task19"],
                          "Pick and place tomato sauce, milk, and orange juice from cabinet1 to cabinet2, in that order.")
         self.assertEqual(prompts["task25"],

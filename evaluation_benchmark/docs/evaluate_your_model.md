@@ -59,6 +59,10 @@ completed pour during that window fails the episode. Use
 This wrapper records every episode. It does not retry seeds and does not filter for non-zero stage scores.
 The sweep uses the benchmark reference stage/goal checkers, so external model evaluation follows the same 1-26 scoring setting as the reference evaluation path.
 
+Task11 places cookies in the top drawer and butter in the middle drawer. See the
+[Task11 instruction and scoring contract](task11_contract.md) for the corrected
+prompt, unchanged scoring predicates, and legacy VLA label compatibility.
+
 `--adapter-spec` points to a Python file and factory function:
 
 ```text

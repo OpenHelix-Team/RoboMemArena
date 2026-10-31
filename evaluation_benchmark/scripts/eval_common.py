@@ -39,7 +39,7 @@ TASK_PROMPTS = {
     "task8": "Pick and place chocolate into the frypan, pour tomato sauce over it twice, then place the sauce bottle into the bowl drainer.",
     "task9": "Put butter into the frypan, pour tomato sauce over it twice, then place the sauce bottle into the bowl drainer.",
     "task10": "Pour wine into the mug twice.",
-    "task11": "Put cookies into the top drawer and put chocolate into another drawer.",
+    "task11": "Put cookies into the top drawer, then put butter into the middle drawer.",
     "task12": "Put cookies into the middle drawer and then put chocolate into the same drawer.",
     "task13": "Put cookies into the middle drawer and then put butter into the same drawer.",
     "task14": "Put cookies into the top drawer and put chocolate into another drawer.",

@@ -353,12 +353,12 @@
       "task_id": 11,
       "data_dir": "11_cookies_top_butter_middle_dataset",
       "suite": "Occlusion",
-      "task_name": "Put Cookies Chocolate into Drawers Respectively",
+      "task_name": "Put Cookies Butter into Drawers Respectively",
       "memory_type": "O + C",
       "challenge": "occlusion, multi-placement",
-      "brief_description": "Put cookies into the top drawer and put chocolate into another drawer according to the local HDF5 primitive labels.",
-      "task_block": "This is an occlusion plus multi-placement task: open the top drawer and put cookies into the top drawer; then open the middle drawer and put chocolate into the middle drawer. Remember which object has already been placed in each drawer, and avoid putting the second object in the wrong location.",
-      "notes": "The directory name says butter, but the HDF5 primitive stems use chocolate.",
+      "brief_description": "Put cookies into the top drawer, then put butter into the middle drawer.",
+      "task_block": "This is an occlusion plus multi-placement task: open the top drawer and put cookies into the top drawer; then open the middle drawer and put butter into the middle drawer. Remember which object has already been placed in each drawer, and avoid putting the second object in the wrong location.",
+      "notes": "Task11 requires cookies in the top drawer and butter in the middle drawer. The historical primitive stems and labels pick_chocolate/place_chocolate are retained only for compatibility with existing training data and VLA action labels; they do not change the target object to chocolate.",
       "primitive_order": [
         {
           "stem": "open_top_drawer",
@@ -393,7 +393,7 @@
           "label": "close middle drawer"
         }
       ],
-      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The cookies and chocolate are small block-like objects on the table. The robot must open the top drawer to place cookies, then open the middle drawer to place chocolate, without confusing the two drawer locations."
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The cookies and butter are small block-like objects on the table. The robot must open the top drawer to place cookies, then open the middle drawer to place butter, without confusing the two drawer locations."
     },
     {
       "task_id": 12,

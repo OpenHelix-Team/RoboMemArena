@@ -1,6 +1,6 @@
 (define (problem LIBERO_Coffee_Table_Manipulation)
   (:domain robosuite)
-  (:language Prepare the coffee serving area by organizing tableware and cleaning out any residual liquid)
+  (:language Put cookies into the top drawer, then put butter into the middle drawer.)
     (:regions
       (bowl_drainer_init_region
           (:target coffee_table)
