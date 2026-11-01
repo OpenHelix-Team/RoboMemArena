@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+from functools import cache
 import hashlib
 import json
 import logging
@@ -95,6 +96,12 @@ def setup_environment(benchmark, run):
     sys.path[:0] = [str(benchmark / 'scripts'), str(benchmark / 'libero_fork')]
 
 
+@cache
+def initialize_renderer(patch_resolution):
+    # The pinned patch wraps Env.__init__; apply it once, not once per episode.
+    patch_resolution()
+
+
 def evaluate_episode(args, profile, task, seed, run, client):
     """One fresh episode; no retry or implicit conversation reset after failure."""
     run.mkdir(parents=True, exist_ok=False)
@@ -108,7 +115,7 @@ def evaluate_episode(args, profile, task, seed, run, client):
     for module in (ec, tasks26, policy_adapter, suite):
         if not Path(module.__file__).resolve().is_relative_to(args.benchmark_root):
             raise RuntimeError('Imported evaluator outside the pinned benchmark: ' + module.__name__)
-    tasks26._patch_env_resolution()
+    initialize_renderer(tasks26._patch_env_resolution)
     broker = run / 'broker'
 
     class LocalPolicy(RoboMemArenaAdapter):

@@ -1,4 +1,6 @@
 """CPU-only release contracts; synthetic scores are never benchmark results."""
+import ast
+import os
 from pathlib import Path
 import sys
 from tempfile import TemporaryDirectory
@@ -11,6 +13,30 @@ import run as runner
 
 
 class RunnerTests(unittest.TestCase):
+    def test_renderer_patch_does_not_accumulate_over_1300_episodes(self):
+        benchmark = Path(os.environ.get('ASTRA_BENCHMARK_ROOT',
+                         runner.ROOT.parents[1] / 'evaluation_benchmark'))
+        source = benchmark / 'scripts/task2_26_reference_stage.py'
+        node = next(n for n in ast.parse(source.read_text()).body
+                    if isinstance(n, ast.FunctionDef) and n.name == '_patch_env_resolution')
+
+        class Env:
+            def __init__(self, **kwargs):
+                self.shape = (kwargs.get('camera_heights'), kwargs.get('camera_widths'))
+
+        ec = SimpleNamespace(_get_env_class=lambda: Env)
+        namespace = {'ec': ec}
+        exec(compile(ast.Module(body=[node], type_ignores=[]), str(source), 'exec'), namespace)
+        for _ in range(1300):
+            runner.initialize_renderer(namespace['_patch_env_resolution'])
+            original = ec._get_env_class
+            base = original()
+            ec._get_env_class = lambda: base
+            try:
+                self.assertEqual(ec._get_env_class()().shape, (480, 640))
+            finally:
+                ec._get_env_class = original
+
     def test_default_plan_is_1300_fresh_episodes(self):
         args = runner.parser().parse_args([])
         self.assertEqual(args.num_trials, 50)
