@@ -1,0 +1,136 @@
+{
+  "model": "gpt-6-astra",
+  "replan_steps": 10,
+  "tasks": {
+    "1": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pick and place cookies into the basket, then pick and place tomato sauce into the same basket."
+    },
+    "2": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Pick and place butter into the basket, then pick and place popcorn into the same basket."
+    },
+    "3": {
+      "reasoning_effort": "ultra",
+      "max_steps": 2500,
+      "prompt": "Pick and place cream into the basket, then pick and place chocolate into the same basket."
+    },
+    "4": {
+      "reasoning_effort": "ultra",
+      "max_steps": 2500,
+      "prompt": "Open and close each drawer to check it, in this order: top, middle, bottom. Put butter into the drawer that already contains an object."
+    },
+    "5": {
+      "reasoning_effort": "ultra",
+      "max_steps": 2500,
+      "prompt": "Open and close each drawer to check it, in this order: top, middle, bottom. Put butter into the empty drawer."
+    },
+    "6": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pour tomato sauce over cookies twice and place the sauce bottle into the bowl drainer."
+    },
+    "7": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Pour tomato sauce over the frypan exactly twice, then place the sauce bottle into the bowl drainer. Pour gently using small, gradual wrist motions. Between pours, fully return the bottle to its original upright orientation and hold it steady before tilting again. If a motion times out, correct it using the actual pose and images; do not assume the bottle has returned upright. Make the second pour only after this upright pause."
+    },
+    "8": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pick and place chocolate into the frypan, pour tomato sauce over it twice, then place the sauce bottle into the bowl drainer."
+    },
+    "9": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Put butter into the frypan, pour tomato sauce over it twice, then place the sauce bottle into the bowl drainer."
+    },
+    "10": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Pour wine into the mug twice."
+    },
+    "11": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Put cookies into the top drawer and put chocolate into another drawer."
+    },
+    "12": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Put cookies into the middle drawer and then put chocolate into the same drawer."
+    },
+    "13": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Put cookies into the middle drawer and then put butter into the same drawer."
+    },
+    "14": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Put cookies into the top drawer and put chocolate into another drawer."
+    },
+    "15": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pick and place butter into the frypan, then pour milk over it twice."
+    },
+    "16": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pick milk from the table, pour it into the mug twice, then place the milk container into the bowl drainer."
+    },
+    "17": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Put butter into the middle drawer and then put chocolate into the same drawer."
+    },
+    "18": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pick and place chocolate and butter from cabinet1 to cabinet2, respectively."
+    },
+    "19": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "Pick and place tomato sauce, milk, and orange juice from cabinet1 to cabinet2, in that order."
+    },
+    "20": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "First, put the cookies into the microwave. Then place the chocolate at the cookies’ new location after that move."
+    },
+    "21": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "First, put the butter into the microwave. Then place the chocolate at the butter’s new location after that move."
+    },
+    "22": {
+      "reasoning_effort": "max",
+      "max_steps": 3500,
+      "prompt": "Pour tomato sauce over cookies twice, then put the cookies into the microwave."
+    },
+    "23": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "First, put the cream into the microwave. Then place the popcorn at the cream’s new location after that move."
+    },
+    "24": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "First, put the cookies into the microwave. Then place the popcorn at the cookies’ new location after that move."
+    },
+    "25": {
+      "reasoning_effort": "medium",
+      "max_steps": 2500,
+      "prompt": "First pick and place butter from plate1 to plate2, then pick and place cream from plate1 to plate2."
+    },
+    "26": {
+      "reasoning_effort": "max",
+      "max_steps": 2500,
+      "prompt": "Pick and place chocolate and cream from plate1 to plate2, respectively."
+    }
+  }
+}

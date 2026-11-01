@@ -1,0 +1,6 @@
+numpy==1.26.4
+scipy==1.15.3
+Pillow==11.2.1
+opencv-python==4.11.0.86
+mujoco==3.3.7
+robosuite==1.4.0
